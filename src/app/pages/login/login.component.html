@@ -1,0 +1,32 @@
+<!--Se pinta el formulario de login con reactive form-->z
+<div class="bigcontainer"> 
+    <section class="loginSection"> 
+        <div class="login" >  
+            <form *ngIf="loginForm"
+                  (submit)="login()"
+                  class="form" 
+                  [formGroup]="loginForm"> 
+                <img src="../../../assets/images/logo.png"/>           
+			    <h1>Accede a la aplicación</h1>
+                <input formControlName="email" class="form__input" placeholder="Introduce tu email">
+                <p class="form__input--error" 
+                    *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.dirty">
+                     Por favor, introduce un email correcto</p>
+                <input formControlName="password" class="form__input" placeholder="Introduce tu contraseña" type="password">   
+                <p class="form__input--error" 
+                    *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.dirty">
+                     Por favor, introduce tu clave de acceso</p>
+                <div class="form__buttons">                              
+                    <button [disabled]="!loginForm.valid"  type="submit" class="form__button form__button--access">Acceder</button>
+                </div>    
+
+                <h2>
+                 ¿No tienes cuenta?</h2>
+                <div class="form__buttons">                              
+                     <button class="form__button form__button--access" (click)="register()">Regístrate</button>
+                 </div>  
+            
+            </form>           
+        </div> 
+    </section>
+</div>

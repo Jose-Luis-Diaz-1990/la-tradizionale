@@ -1,0 +1,92 @@
+<form
+  *ngIf="pizzaForm"
+  (submit)="createNewPizza()"
+  [formGroup]="pizzaForm"
+  name="miPizza"
+  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px"
+>
+  <div>
+    <h4>Tamaño</h4>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="size"
+        value="pequena"
+      />Pequeña
+    </p>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="size"
+        value="mediana"
+      />Mediana
+    </p>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="size"
+        value="familiar"
+      />Familiar
+    </p>
+  </div>
+  <div>
+    <h4>Tipo de masa</h4>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="mass"
+        value="fina"
+      />Masa fina
+    </p>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="mass"
+        value="original"
+      />Masa Original
+    </p>
+  </div>
+  <div>
+    <h4>Tipo de salsa</h4>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="dip"
+        value="tomate"
+      />Salsa de tomate
+    </p>
+    <p>
+      <input
+        class="form__input"
+        type="radio"
+        formControlName="dip"
+        value="carbonara"
+      />Salsa carbonara
+    </p>
+    <p>
+        <input
+          class="form__input"
+          type="radio"
+          formControlName="dip"
+          value="barbacoa"
+        />Salsa barbacoa
+      </p>
+  </div>
+  <div>
+    <h4>Ingredientes</h4>
+      <div *ngFor="let oneIngredient of ingredient">
+        <label>
+          <input type="checkbox" formArrayName="ingredients" (change)="onCheckboxChange($event, oneIngredient.name)"/>
+          <span>{{ oneIngredient.name }}</span>
+          <img [src]="oneIngredient.picture" style="width: 50px;"/> 
+        </label>
+      </div>
+  </div>
+  <button type="submit" [disabled]="createNewPizza()">Enviar</button>
+</form>

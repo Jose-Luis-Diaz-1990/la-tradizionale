@@ -1,0 +1,64 @@
+<!-- Muestra el formulario de registro de usuario. Formulario muy similar al login (casi un copy paste)-->
+<div class="bigcontainer"> 
+    <section class="loginSection"> 
+        <div class="login" >  
+            <form *ngIf="registerForm"
+                  class="form" 
+                  (submit)="register()"
+                  [formGroup]="registerForm"> 
+                <img src="../../../assets/images/logo.png"/>                 
+			    <h1>Regístrate</h1>
+                <input formControlName="name" class="form__input" placeholder="Introduce tu nombre">
+                <p class="form__input--error" 
+                    *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.dirty">
+                     Por favor, introduce tu nombre correctamente</p>
+
+                <input formControlName="surname" class="form__input" placeholder="Introduce tus apellidos">
+                <p class="form__input--error" 
+                    *ngIf="!registerForm.get('surname')?.valid && registerForm.get('surname')?.dirty">
+                    Por favor, introduce tus apellidos correctamente</p>
+                
+                <input formControlName="address" class="form__input" placeholder="Introduce tu domicilio">
+                <p class="form__input--error" 
+                    *ngIf="!registerForm.get('address')?.valid && registerForm.get('address')?.dirty">
+                    Por favor, introduce tu domicilio</p>
+                
+                <input formControlName="postalcode" class="form__input" placeholder="Introduce tu código postal">
+                <p class="form__input--error" 
+                        *ngIf="!registerForm.get('postalcode')?.valid && registerForm.get('postalcode')?.dirty">
+                        Por favor, introduce tu código postal</p>
+                
+                <select formControlName="city" class="form__input form__input--select">
+                    <option value={{BYDEFAULTCITY}}>{{BYDEFAULTCITY}}</option>
+                    <option *ngFor="let c of cities" [value]="c">{{c}}</option>
+                </select>
+                <p class="form__input--error" 
+                        *ngIf="!registerForm.get('city')?.valid && registerForm.get('city')?.dirty">
+                         Por favor, selecciona tu ciudad</p>
+
+                <input formControlName="email" class="form__input" placeholder="Introduce tu email">
+                <p class="form__input--error" 
+                    *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.dirty">
+                     Por favor, introduce un email correcto</p>
+
+                <input formControlName="password" class="form__input" placeholder="Introduce tu password" type="password">  
+                <p class="form__input--error" 
+                     *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.dirty">
+                     Por favor, introduce una clave de más de 8 carácteres con mayúsculas, minúsculas, números y simbolos</p>
+
+                <input formControlName="passwordRepeat" class="form__input" placeholder="Repite la password" type="password">   
+                <p class="form__input--error" 
+                    *ngIf="!registerForm.get('passwordRepeat')?.valid && registerForm.get('passwordRepeat')?.dirty">
+                    Las claves no son iguales</p>
+
+                <div class="form__buttons">                                                  
+                    <button [disabled]="!registerForm.valid"  type="submit" class="form__button form__button--access">Acceder</button>
+                </div>  
+                <p
+                class="form__input--error"
+                *ngIf="error"
+>               {{ error }}</p>
+            </form>           
+        </div> 
+    </section>
+</div>

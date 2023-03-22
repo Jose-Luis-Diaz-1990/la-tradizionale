@@ -1,0 +1,273 @@
+<section class="home" id="home">
+
+
+  <div class="content">
+ 
+
+          <h1>La <span>Tradizionale</span></h1>
+
+          <p>Un auténtico italiano de la cocina a la mesa donde cada ingrediente es 100% Made in Italy, cuyo objetivo es sorprender a los clientes, ofrecemos servicio de Take Away durante todo el día.</p>
+
+          <a href="#" class="btn">Hacer pedido</a>
+
+
+  </div>
+
+  <div class="image">
+
+      <img src="../../../assets/images/banner-removebg-preview.png" alt="">
+
+  </div>
+
+
+</section>
+
+<!-- home section ends ---->
+
+<div class="content">
+    <div class="slider">
+      <div class="slides">
+        <input
+          type="radio"
+          name="slide-picker"
+          id="slide-1"
+          class="picker"
+          checked
+        />
+        <input type="radio" name="slide-picker" id="slide-2" class="picker" />
+        <input type="radio" name="slide-picker" id="slide-3" class="picker" />
+        <input type="radio" name="slide-picker" id="slide-4" class="picker" />
+  
+        <div class="slide" id="mover">
+          <picture>
+
+            <img
+              src="../../../assets/images/5.png"
+              alt="Bancada do restaurante"
+            />
+          </picture>
+        </div>
+  
+        <div class="slide">
+          <picture>
+            <img
+              src="../../../assets/images/9.png"
+              alt="Chefe cortando pizza"
+            />
+          </picture>
+        </div>
+  
+        <div class="slide">
+          <picture>
+            <img
+              src="../../../assets/images/6.png"
+              alt="Pizza no forno"
+            />
+          </picture>
+        </div>
+  
+        <div class="slide">
+          <picture>
+            <img
+              src="../../../assets/images/10.png"
+              alt="Pizza sendo compartilhada"
+            />
+          </picture>
+        </div>
+  
+        <div class="navigation">
+          <label
+            for="slide-1"
+            class="picker-button"
+            id="label-slide-1"
+            aria-disabled="true"
+            (click)="setSlide($event, 1)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="setSlide($event, 1)"
+          >
+          </label>
+          <label
+            for="slide-2"
+            class="picker-button"
+            id="label-slide-2"
+            aria-disabled="true"
+            (click)="setSlide($event, 2)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="setSlide($event, 2)"
+          >
+          </label>
+          <label
+            for="slide-3"
+            class="picker-button"
+            id="label-slide-3"
+            aria-disabled="true"
+            (click)="setSlide($event, 3)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="setSlide($event, 3)"
+          >
+          </label>
+          <label
+            for="slide-4"
+            class="picker-button"
+            id="label-slide-4"
+            aria-disabled="true"
+            (click)="setSlide($event, 4)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="setSlide($event, 4)"
+          >
+          </label>
+  
+          <div class="option-divider"></div>
+  
+          <button
+            class="pause-slide-button"
+            *ngIf="!pausedSlides"
+            (click)="stopAutomaticSlideAdvance($event)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="stopAutomaticSlideAdvance($event)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
+              <path d="M12.125 14.75v-9.5h2.417v9.5Zm-6.667 0v-9.5h2.417v9.5Z" />
+            </svg>
+          </button>
+  
+          <button
+            class="play-slide-button"
+            *ngIf="pausedSlides"
+            (click)="resumeAutomaticSlideAdvance($event)"
+            (touchstart)="setInitialTouchPoint($event)"
+            (touchend)="resumeAutomaticSlideAdvance($event)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
+              <path d="M6.833 15.812V4.188L15.812 10Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <button
+        class="slide-back-button"
+        (click)="slideBack($event)"
+        (touchstart)="setInitialTouchPoint($event)"
+        (touchend)="slideBack($event)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40">
+          <path
+            d="M26.792 35.167 11.625 20 26.792 4.833l1.291 1.292L14.208 20l13.875 13.875Z"
+          />
+        </svg>
+      </button>
+  
+      <button
+        class="slide-advance-button"
+        (click)="slideAdvance($event)"
+        (touchstart)="setInitialTouchPoint($event)"
+        (touchend)="slideAdvance($event)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40">
+          <path
+            d="m13.208 35.125-1.333-1.25 13.917-13.917L11.875 6.125l1.333-1.333 15.167 15.166Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+
+
+<!-- features section starts -->
+
+<section class="features" id="features">
+
+  <div class="box">
+
+      <img class="fas fa-shipping-fast" src="../../../assets/images/ingredient.png"/>
+
+      <h3>Productos seleccionados</h3>
+
+      <p>Productos italianos de primera calidad.</p>
+
+  </div>
+
+  <div class="box">
+
+      <img class="fas fa-shipping-fast" src="../../../assets/images/fast-delivery.png"/>
+
+      <h3>Take Away </h3>
+
+      <p>De la cocina a su mesa en unos minutos.</p>
+
+  </div>
+
+  <div class="box">
+
+      <img class="fas fa-hand-holding-usd" src="../../../assets/images/roller.png"/>
+
+      <h3>Receta original</h3>
+
+      <p>Receta original italiana, el sabor de Nápoles.</p>
+
+  </div>
+
+</section>
+
+<section class="about">
+
+  <h2 >Sobre nosotros</h2>
+  <p> La Tradizionale te invita a un viaje por la cocina italiana pero con un toque especial, el sabor de Nápoles. Cocina tradicional e innovadora es lo que proponen el chef y su equipo, que combinan experiencia, creatividad y un don natural para sorprender con platos típicos de la cucina italiana. </p>
+
+</section>
+
+<section class="contact" id="contact">
+
+
+  <div class="form">
+
+      <div class="icons-container">
+
+          <div class="icons" >
+
+              <h2>Contacto</h2>
+
+              <i class="fas fa-map"></i>
+
+              <h3>Dirección: </h3>
+
+              <a href="https://www.google.com/maps/place/Upgrade+hub/@40.4582536,-3.6949427,15z/data=!4m6!3m5!1s0xd4229775edcab1b:0xbd4c6a7181e44101!8m2!3d40.4582536!4d-3.6949427!16s%2Fg%2F11gyysy37_"><p>C. de Orense, 69, 28020 Madrid</p></a>
+
+          </div>
+
+          <div class="icons" >
+
+              <i class="fas fa-envelope"></i>
+
+              <h3>Email: </h3>
+
+              <a href=" mailto:la.tradizionale@gmail.com"><p>la.tradizionale@gmail.com</p></a>
+
+          </div>
+
+          <div class="icons">
+
+              <i class="fas fa-phone"></i>
+
+              <h3>Contacto: </h3>
+
+              <a href="tel:+346795541236"><p>+34 679 554 1236</p></a>
+
+
+          </div>
+
+
+      </div>
+
+  </div>
+
+  <div class="row">
+
+
+      <iframe class="map" style="width: 100%; height: 50vh; border-radius: .5rem;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.7480498146942!2d-3.6968890489184196!3d40.45871307925905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229775edcab1b%3A0xbd4c6a7181e44101!2sUpgrade%20Hub%20-%20Cursos%20TIC!5e0!3m2!1sen!2ses!4v1603758567917!5m2!1sen!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </div>
+</section>
+  

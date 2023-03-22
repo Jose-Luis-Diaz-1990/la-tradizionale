@@ -1,0 +1,200 @@
+/* Estilos generales */
+
+*{
+  font-family: "Raleway", sans-serif;
+}
+
+.bigcontainer {
+  margin-top: -1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://i.pinimg.com/564x/ca/79/be/ca79bedb7c9a284f3e870a11986df5bc.jpg);
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+
+  
+  }
+
+  
+  
+  .loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px black(0, 0, 0, 0.1);
+    padding: 40px;
+  }
+  
+  /* Estilos para el formulario */
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form img{
+    width: 150px;
+    margin-bottom: 5%;
+  }
+  
+  .form h1 {
+   
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    
+  }
+  
+  .form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #666;
+    font-size: 15px;
+    transition: border-color 0.2s ease-in-out;
+    background-color: black;
+    color: white;
+  }
+  
+  .form__input:focus {
+    border-color: #78a62b;
+  }
+  
+  .form__input--error {
+    color: #df0313;
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  
+  
+  .form__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .form__button {
+    background-color: #78a62b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .form__button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .form__button:hover:not(:disabled) {
+    background-color: #78a62b;
+  }
+  
+  .form__button--access {
+    margin-left: 10px;
+  }
+  
+  /* Estilos para el botón de registro */
+  
+  .loginSection > div:last-child {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .loginSection button {
+    background-color: black;
+    border: 2px solid #78a62b;
+    color: #78a62b;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .loginSection button:hover {
+    background-color: #78a62b;
+    color: white;
+  }
+  
+  .form h2 {
+    font-family: "Raleway", sans-serif;
+    margin-top: 10%;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+  }
+
+   /* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  .bigcontainer{
+    margin-top: -3%;
+  }
+    
+  .loginSection {
+    width: 80%;
+  }
+  .form img{
+    width: 100px;
+  }
+  .form h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .form__input {
+    font-size: 14px;
+  }
+  .form__button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .form h2 {
+    font-size: 12px;
+    margin-top: 5%;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .loginSection {
+    width: 60%;
+  }
+  .form img{
+    width: 120px;
+  }
+  .form h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .form__input {
+    font-size: 14px;
+  }
+  .form__button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .form h2 {
+    font-size: 12px;
+    margin-top: 5%;
+  }
+}
+
+  
+
+  
