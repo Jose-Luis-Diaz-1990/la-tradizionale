@@ -5,7 +5,7 @@ import { ReplaySubject, tap, Observable } from 'rxjs';
 import { IUser, IUserSignInResponse } from './models/auth.models';
 
 
-const AUTH_URL="https://proyecto-node-olive.vercel.app/user";
+const AUTH_URL="https://back-pizza.vercel.app";
 const TOKEN_KEY="user-token";
 
 @Injectable({
