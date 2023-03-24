@@ -13,9 +13,9 @@
                     *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.dirty">
                      Por favor, introduce tu nombre correctamente</p>
 
-                <input formControlName="surname" class="form__input" placeholder="Introduce tus apellidos">
+                <input formControlName="surnames" class="form__input" placeholder="Introduce tus apellidos">
                 <p class="form__input--error" 
-                    *ngIf="!registerForm.get('surname')?.valid && registerForm.get('surname')?.dirty">
+                    *ngIf="!registerForm.get('surnames')?.valid && registerForm.get('surnames')?.dirty">
                     Por favor, introduce tus apellidos correctamente</p>
                 
                 <input formControlName="address" class="form__input" placeholder="Introduce tu domicilio">
@@ -23,9 +23,9 @@
                     *ngIf="!registerForm.get('address')?.valid && registerForm.get('address')?.dirty">
                     Por favor, introduce tu domicilio</p>
                 
-                <input formControlName="postalcode" class="form__input" placeholder="Introduce tu código postal">
+                <input formControlName="postacode" class="form__input" placeholder="Introduce tu código postal">
                 <p class="form__input--error" 
-                        *ngIf="!registerForm.get('postalcode')?.valid && registerForm.get('postalcode')?.dirty">
+                        *ngIf="!registerForm.get('postacode')?.valid && registerForm.get('postacode')?.dirty">
                         Por favor, introduce tu código postal</p>
                 
                 <select formControlName="city" class="form__input form__input--select">

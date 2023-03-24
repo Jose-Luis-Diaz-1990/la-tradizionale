@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -14,17 +15,26 @@ export class HeaderComponent  {
 
   constructor(
     private router: Router,
+    private auth:AuthService
   ) {}
 
   //Ruta que lleva a la página de not-found, se accede a ella cuando la url no existe.
   public navigateToNotFound() {
     this.router.navigate(['no-existe']);
   }
-
-
    
-  toggleMenu() {
+  public toggleMenu() {
     this.showMenu = !this.showMenu;
+  }
+
+  //Nos suscribimos al observable que nos determina si el usuario está o no conectado.
+  public ngOnInit(): void {  
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
+  }
+  
+  //Cerramos la sesión del usuario usando el método logout del servicio auth
+  public cerrarSesion():void{
+    this.auth.logout();
   }
   }
 

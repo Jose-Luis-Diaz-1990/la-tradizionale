@@ -14,14 +14,13 @@ export class PizzasCartComponent implements OnInit{
     private pizzaService: PizzaCartService
   ) {}
 
-  public ngOnInit(): void {
+  public ngOnInit(): void { 
     this.pizzaService.getPizzas().subscribe((pizza: Pizza[])=> {
       this.pizza = pizza;
     });
   }
-
-
   addToCart( pizza: Pizza){
+    debugger;
     return this.pizzaService.addPizzas(pizza);
   }
 }
