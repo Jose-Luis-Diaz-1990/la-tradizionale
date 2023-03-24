@@ -1,5 +1,5 @@
 <header class="header">
-  <a  *ngIf="!isLogged" [routerLink]="['home']">
+  <a  [routerLink]="['home']">
     <img class="logo" src="../../../../assets/images/logo.png" />
   </a>
 
@@ -12,12 +12,14 @@
     <a href="#pizzaCart" [routerLink]="['pizzaCart']">PizzaCart</a>
     <a href="#features">Pizzas</a>
     <a href="#menu">Mi pizza</a>
-    <a  *ngIf="!isLogged" [routerLink]="['login']" class="user">
+    <a *ngIf="!isLogged" [routerLink]="['login']" class="user">
       <img src="../../../../assets/images/usuario.png"/>
     </a>
-    <a [routerLink]="['cart']">
+    <a *ngIf="isLogged" [routerLink]="['cart']">
       <img href="#" class="shop" src="../../../../assets/images/carrito-de-compras.png" />
     </a>
+    <a *ngIf="isLogged"
+        (click)="cerrarSesion()">Cerrar Sesión</a>
   </nav>
 </header>
 

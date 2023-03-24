@@ -25,9 +25,9 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.fb.group({
       name: new FormControl('', [Validators.required]),
-      surname: new FormControl('', [Validators.required]),
+      surnames: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
-      postalcode: new FormControl('', [Validators.required]),
+      postacode: new FormControl('', [Validators.required]),
       city:new FormControl(this.BYDEFAULTCITY, [isValidCity()]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),

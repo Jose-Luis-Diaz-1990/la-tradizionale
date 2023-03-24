@@ -21,7 +21,7 @@ export class AuthService {
   //Función que llama al end point de login. Se guarda el token en el local storage para poderlo usar posteriormente
   //en los end points que necesitan autenticación. 
   public login(user:IUser):Observable<IUserSignInResponse>{
-    return this.http.post<IUserSignInResponse>(`${AUTH_URL}/login-jwt`, user).pipe(
+    return this.http.post<IUserSignInResponse>(`${AUTH_URL}/user/login-jwt`, user).pipe(
             tap((res:IUserSignInResponse)=>{
               const userToStore=JSON.stringify({token:res.token, id:res.user._id, email:res.user.email});
               localStorage.setItem(TOKEN_KEY, userToStore);
@@ -34,7 +34,7 @@ export class AuthService {
   //Función que llama al end point register. 
   public register(user:IUser):Observable<IUser>
   {
-    return this.http.post<IUser>(`${AUTH_URL}/register`, user)
+    return this.http.post<IUser>(`${AUTH_URL}/user/register`, user)
   }
 
   //Función que determina si el usuario ya está identificado para ello verifica si el token está guardado en el local storage.
