@@ -1,0 +1,400 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
+section {
+  padding: 3rem 4%;
+}
+
+.btn {
+  font-family: "Raleway", sans-serif;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 4%;
+  color: #fff;
+  border: 0.2rem solid rgba(255, 255, 255, 0.3);
+  font-size: 1.7rem;
+  background: none;
+  padding: 1rem 3rem;
+}
+
+.btn:hover {
+  color: white;
+  background: #df0313;
+}
+
+.home {
+  background: url(../../../assets/images/home-bg.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-top: 7rem;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .image {
+  flex: 1 1 40rem;
+}
+
+.home .image img {
+  width: 100%;
+}
+
+.home .content {
+  flex: 1 1 40rem;
+  text-align: center;
+}
+
+.home .content h1 {
+  margin-top: 20%;
+  font-family: "La Belle Aurore", cursive;
+  font-size: 5rem;
+  color: #78a62b;
+  margin-bottom: 1rem;
+}
+
+.home .content h1 span {
+  font-family: "La Belle Aurore", cursive;
+  color: #df0313;
+}
+
+.home .content p {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.9rem;
+  color: #aaa;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+.content {
+  min-height: calc(100vh - 288px);
+}
+
+.slider {
+  width: 100%;
+  max-width: 1920px;
+  height: 60vh; /* Usando unidades relativas para la altura */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+}
+
+.picker {
+  display: none;
+}
+
+.slide {
+  width: 25%;
+  transition: 1s;
+  position: relative;
+}
+
+.slide picture img {
+  height: 100%;
+  width: 100%;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.picker-button {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--light-yellow-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+#slide-1:checked ~ .navigation #label-slide-1,
+#slide-2:checked ~ .navigation #label-slide-2,
+#slide-3:checked ~ .navigation #label-slide-3,
+#slide-4:checked ~ .navigation #label-slide-4 {
+  background-color: var(--light-yellow-color);
+}
+
+#slide-1:checked ~ #mover {
+  margin-left: 0%;
+}
+
+#slide-2:checked ~ #mover {
+  margin-left: -25%;
+}
+
+#slide-3:checked ~ #mover {
+  margin-left: -50%;
+}
+
+#slide-4:checked ~ #mover {
+  margin-left: -75%;
+}
+
+.pause-slide-button,
+.play-slide-button {
+  display: flex;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pause-slide-button svg,
+.play-slide-button svg {
+  fill: var(--light-yellow-color);
+}
+
+.slide-back-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.slide-advance-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.slide-back-button svg,
+.slide-advance-button svg {
+  fill: var(--white-color);
+}
+
+.features {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.features .box {
+  padding: 2rem;
+  text-align: center;
+}
+
+.features .box h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #78a62b;
+}
+
+.features .box p {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #aaa;
+}
+
+.fas {
+  margin-bottom: 5%;
+}
+
+.about {
+  margin-bottom: 5%;
+  background-image: url("https://www.opentable.com.mx/blog/wp-content/uploads/sites/432/2022/11/screen-shot-2022-11-01-at-4-51-00-pm.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  color: #fff;
+  padding: 100px;
+}
+
+.about h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about p {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #dadada;
+}
+
+.contact {
+  font-family: "Raleway", sans-serif;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 5%;
+}
+
+.contact .row {
+  flex: 1 1 30rem;
+}
+
+.contact .row h2 {
+  color: #78a62b;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0.2rem 0.5rem #000;
+}
+
+.contact .form {
+  flex: 1 1 30rem;
+}
+
+.contact .form .icons i {
+  color: #FFE900;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.contact .form .icons h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #78a62b;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0.2rem 0.5rem #000;
+}
+
+.contact .form .icons h3 {
+  font-size: 2rem;
+  line-height: 2;
+  color: #fff;
+}
+
+.contact .form .icons p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #aaa;
+}
+
+.contact .form .icons p:hover {
+  text-decoration: underline;
+}
+
+.icons-container {
+  margin-left: 20%;
+}
+
+.row {
+  margin-right: 5%;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .btn {
+    font-size: 1.2rem;
+    margin-top: 2%;
+  }
+  .home {
+    margin-top: 4rem;
+  }
+  .home .image, .home .content {
+    flex: 1 1 100%;
+    padding: 2rem;
+    margin-bottom: -20%;
+  }
+  .home .content h1 {
+    font-size: 3rem;
+    margin-top: 10%;
+  }
+  .home .content p {
+    font-size: 1.3rem;
+    padding: 0;
+  }
+  .picker-button {
+    width: 6px;
+    height: 6px;
+  }
+  .features .box {
+    padding: 1.5rem;
+  }
+  .features .box h3 {
+    font-size: 1.5rem;
+  }
+  .features .box p {
+    font-size: 1.2rem;
+  }
+  .content {
+    margin-bottom: -20%;
+  }
+  /* Estilos para pantallas medianas */
+}
+@media screen and (max-width: 768px) and (min-width: 768px) and (max-width: 1024px) {
+  section {
+    padding: 2rem 4%;
+  }
+  .btn {
+    font-size: 1.5rem;
+    margin-top: 3%;
+  }
+  .home {
+    margin-top: 6rem;
+  }
+  .home .image, .home .content {
+    flex: 1 1 50%;
+    padding: 3rem;
+    margin-bottom: -20%;
+  }
+  .home .content h1 {
+    font-size: 4rem;
+    margin-top: 15%;
+  }
+  .home .content p {
+    font-size: 1.7rem;
+    padding: 0 2rem;
+  }
+  .picker-button {
+    width: 7px;
+    height: 7px;
+  }
+  .features .box {
+    padding: 2rem;
+  }
+  .features .box h3 {
+    font-size: 1.8rem;
+  }
+  .features .box p {
+    font-size: 1.4rem;
+  }
+  .content {
+    margin-bottom: -20%;
+  }
+}/*# sourceMappingURL=home.component.css.map */
