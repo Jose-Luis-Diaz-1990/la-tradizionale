@@ -2,7 +2,7 @@
     <h4>Pizzas</h4>
       <div *ngFor="let onePizza of pizza"  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px">
           <p>{{ onePizza.name }}</p>
-          <img [src]="onePizza.picture" style="width: 50px;"/>
+          <img [src]="onePizza.picture" style="width: 200px;"/>
           <select name="size" [id]="onePizza.name">
             <option value="pequena">Pequeña</option>
             <option value="mediana">Mediana</option>

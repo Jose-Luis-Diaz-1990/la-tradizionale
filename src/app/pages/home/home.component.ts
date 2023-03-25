@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 import { TouchEventHandlerService } from 'src/app/core/services/touch-event-handler.service';
@@ -17,7 +18,13 @@ export class HomeComponent implements OnInit {
   //pausedSlides es una variable que indica si las diapositivas están actualmente en pausa o no.
   public pausedSlides = false;
 
-  constructor(private touchEventHandlerService: TouchEventHandlerService) { }
+
+  constructor(private touchEventHandlerService: TouchEventHandlerService,
+    private router: Router ) { }
+
+    public goToPizzas(){
+      this.router.navigate(['pizzaCart'])
+    }
 
   //viewSlide es un método privado que cambia la diapositiva actual para que coincida con la diapositiva especificada. Recibe el número de la diapositiva como argumento y usa el método getElementById de JavaScript para encontrar el botón de radio correspondiente y establecer su propiedad checked en true.
   private viewSlide(slideNumber: number) {
@@ -47,6 +54,7 @@ export class HomeComponent implements OnInit {
 
     this.automaticSlideAdvance();
   }
+
 
   //stopAutomaticSlideAdvance es un método público que detiene la presentación automática de diapositivas. Recibe un evento como argumento y lo usa para llamar a stopPropagation y preventDefault para evitar que el evento se propague y detener cualquier comportamiento predeterminado que pueda tener el navegador. Luego llama a clearInterval para detener el intervalo de tiempo que se usa para avanzar automáticamente las diapositivas y establece pausedSlides en true.
   public stopAutomaticSlideAdvance(e: Event) {
