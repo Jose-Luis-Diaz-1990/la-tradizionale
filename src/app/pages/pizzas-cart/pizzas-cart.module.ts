@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PizzasCartRoutingModule } from './pizzas-cart-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PizzasCartRoutingModule } from './pizzas-cart-routing.module';
   ],
   imports: [
     CommonModule,
-    PizzasCartRoutingModule
+    PizzasCartRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PizzasCartModule { }
