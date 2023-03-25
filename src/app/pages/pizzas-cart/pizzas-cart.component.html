@@ -7,7 +7,7 @@
 <section class="List">
   <div class="container">
     <div class="list_pizzas">
-        <div class="pizza" *ngFor="let onePizza of pizza">
+        <div class="pizza" *ngFor="let onePizza of pizza | pagination:pagina ">
           <div class="prueba">
           <img class="pizza_img" [src]="onePizza.picture"/>
           <select class="select" name="size" [id]="onePizza.name">
@@ -28,7 +28,14 @@
                 Añadir
               </button>
             </div>
+            
           </div>
+      </div>
+    </div>
+    <div class="pagination-container">
+      <div class="pagination-button">
+        <img src="../../../assets/images/previous.png" alt="Previous" [ngStyle]="pagina <= 0 ? {'display': 'none'} : null" (click)="prevPage()" class="btn-img">
+        <img src="../../../assets/images/next.png"alt="Next" [ngStyle]="pagina >= 80 ? {'display': 'none'} : null" (click)="nextPage()" class="btn-img">
       </div>
     </div>
   </div>

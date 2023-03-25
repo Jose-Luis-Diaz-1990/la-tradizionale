@@ -12,6 +12,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
     color: #fff;
+    margin-bottom: -5%;
   }
   
   .menu_h2 {
@@ -49,12 +50,15 @@
     color: #fff;
     padding: 100px 0;
   }
-  //.container{
-    //width: 50%;
-  //}
+  .container{
+    width: 80%;
+    margin: 0 auto;
+    
+  }
   
   .menu_title {
     text-align: center;
+    
   }
   
   
@@ -113,7 +117,7 @@
     position: relative;
     text-align: center;
     transition: all 0.3s ease;
-    width: 300px;
+    width: 250px;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: multiply;
@@ -127,7 +131,7 @@
   
   .pizza_img {
     margin-bottom: 20px;
-    width: 250px;
+    width: 200px;
     border-radius: 10%;
     
   }
@@ -187,5 +191,22 @@
     font-size: 1.7rem;
     background: none;
     padding: 1rem 3rem;
+  }
+  
+  
+.pagination-container {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn-img {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    margin: 0 5px;
+    width: 35px;
+    
   }
   

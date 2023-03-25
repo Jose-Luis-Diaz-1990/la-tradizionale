@@ -15,8 +15,11 @@
       <img src="../../../../assets/images/usuario.png"/>
     </a>
     <a *ngIf="isLogged" [routerLink]="['cart']">
-      <img href="#" class="shop" src="../../../../assets/images/carrito-de-compras.png" />
+      <img href="#" class="shop" src="../../../../assets/images/carrito-de-compras.png"  />
     </a>
+    <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
+    </div>
     <a *ngIf="isLogged"
        class="user" (click)="cerrarSesion()"> <img src="../../../../assets/images/cerrar-sesion.png"/></a>
   </nav>
