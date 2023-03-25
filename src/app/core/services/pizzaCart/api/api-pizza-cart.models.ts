@@ -1,7 +1,7 @@
 import { apiIngredient } from '../../ingredients/api/api-ingradients.models';
 
 export interface apiPizza {
-    id: string;
+    _id: string;
     name: string;
     mass: string;
     size: string;
@@ -9,7 +9,9 @@ export interface apiPizza {
     ingredients: apiIngredient[];
     price: number;
     account: number;
+    cantidad: number;
     picture: string;
     createdAt?: string;
     updatedAt?: string;
+    
 }

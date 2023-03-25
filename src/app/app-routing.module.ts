@@ -24,10 +24,6 @@ const routes: Routes = [
     path: 'create-pizza',
     loadChildren: () => import('./pages/create-pizza/create-pizza.module').then(m => m.CreatePizzaModule)
   },
-  {
-    path: 'pizzas',
-    loadChildren: () => import('./pages/pizzas/pizzas.module').then(m => m.PizzasModule)
-  },
    {
     path: 'pizzaCart',
     loadChildren: () => import('./pages/pizzas-cart/pizzas-cart.module').then(m => m.PizzasCartModule)

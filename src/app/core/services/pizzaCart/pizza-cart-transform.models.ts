@@ -1,7 +1,7 @@
 import { apiTransformIngredients } from '../ingredients/api-transform-ingredients.models';
 
 export interface Pizza {
-    id: string;
+    _id: string;
     name: string;
     mass: string;
     size: string;

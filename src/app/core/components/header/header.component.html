@@ -10,7 +10,6 @@
   <nav class="navbar" [ngClass]="{'show': showMenu}">
     <a href="#home" [routerLink]="['home']">Home</a>
     <a href="#pizzaCart" [routerLink]="['pizzaCart']">PizzaCart</a>
-    <a href="#features">Pizzas</a>
     <a href="#menu">Mi pizza</a>
     <a *ngIf="!isLogged" [routerLink]="['login']" class="user">
       <img src="../../../../assets/images/usuario.png"/>

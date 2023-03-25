@@ -20,7 +20,6 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   addToCart( pizza: Pizza){
-    debugger;
     return this.pizzaService.addPizzas(pizza);
   }
 }

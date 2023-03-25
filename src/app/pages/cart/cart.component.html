@@ -1,9 +1,10 @@
-<div class="productCart">
+<div class="productCart-wrapper">
     <article class="prodctCart" *ngFor="let pizzaBuy of myCart$ |async">
         <div class="product-body">
             <p>{{pizzaBuy.name}}</p>
             <div class="product-body-info">
                 <p>{{pizzaBuy.size}}</p>
+                <p>{{pizzaBuy.price}}</p>
                 <img [src]="pizzaBuy.picture" style="width: 50px;"/>
             </div>
         </div>
@@ -12,10 +13,10 @@
         </div>
         <div class="productCart-buttons">
             <div class="productCart-buttons-operators">
-                <p (click)="updateUnits('minus', pizzaBuy.id)"> - </p>
-                <p (click)="updateUnits('add', pizzaBuy.id)"> + </p>
+                <p (click)="updateUnits('minus', pizzaBuy._id)"> - </p>
+                <p (click)="updateUnits('add', pizzaBuy._id)"> + </p>
             </div>
-            <button class="productDelete" (click)="deleteProduct(pizzaBuy.id)">Icono Papelera</button>
+      
         </div>
     </article>
     <div class="cartTotal">

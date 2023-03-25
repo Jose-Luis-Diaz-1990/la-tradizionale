@@ -61,5 +61,7 @@ export class CreatePizzaComponent implements OnInit {
 
   public createNewPizza() {
     console.log(this.pizzaForm);
+    console.log(this.pizzaForm);
+    
   }
 }
