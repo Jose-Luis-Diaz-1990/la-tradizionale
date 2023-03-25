@@ -1,30 +1,16 @@
 <div>
   <h4>Pizzas</h4>
-
-
-    <div *ngFor="let onePizza of pizza"  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px">
-        
-      <p>{{ onePizza.name }}</p>
-        
+    <div *ngFor="let onePizza of pizza"  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px">        
+      <p>{{ onePizza.name }}</p>        
         <img [src]="onePizza.picture" style="width: 50px;"/>
-
         <form  
-        *ngIf="pizzaForm"
-        (submit)="createNewPizza()"
-        [formGroup]="pizzaForm"
-        name="miPizza">
-          
-            <select formControlName="size" (change)="onSectionChange($event.target)">
-              <option value="">Selecciona un tamaño</option>
-              <option value="pequena">Pequeña</option>
-              <option value="mediana">Mediana</option>
-              <option value="familiar">Familiar</option>
+            *ngIf="pizzaForm"           
+            [formGroup]="pizzaForm"
+            name="miPizza">          
+            <select formControlName="size">   
+              <option *ngFor="let s of sizeOptions" value="{{s}}">{{s | titlecase}}</option>     
             </select>
-
-        </form>
-        
-
-
+          
         <p *ngFor="let oneIngredient of onePizza.ingredients">
           {{oneIngredient.name}}
         </p>
@@ -34,5 +20,6 @@
               Añadir
             </button>
         </div>
+      </form>   
     </div>
 </div>

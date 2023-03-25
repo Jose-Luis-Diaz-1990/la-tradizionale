@@ -10,14 +10,19 @@ import { ApiPizzaCartService } from './api/api-pizza-cart.service';
 export class PizzaCartService {
 
 // lista de carrito.
-private mylist:Pizza[]=[];
+mylist:Pizza[]=[];
 // Carrito observable.
-private myCart = new BehaviorSubject<Pizza[]>([]);
+myCart = new BehaviorSubject<Pizza[]>([]);
 // Le indicamos el valor que va a guardar.
 myCart$ = this.myCart.asObservable();
 
 constructor( 
-  private apiPizzaService: ApiPizzaCartService) { }
+  private apiPizzaService: ApiPizzaCartService) {
+    const curChart = this.getOrders();
+    if (curChart){
+      this.mylist=curChart
+    }
+   }
 
 //Funcion que transforma los datos en bruto del GET al api
 public getPizzas(): Observable<Pizza[]>{
@@ -29,6 +34,16 @@ public getPizzas(): Observable<Pizza[]>{
       });
     })
   );
+}
+
+public getOrders(){
+  const carrito= localStorage.getItem("carrito");
+  if (carrito) {return JSON.parse(carrito)}
+  return null;
+}
+
+public setOrders(value:Pizza[]){
+  localStorage.setItem("carrito",JSON.stringify(value));  
 }
 //Funcion que transforma los datos en bruto para el DELETE al api
 public deletePizzas(id: string): Observable<Pizza> {
@@ -60,38 +75,52 @@ public editPizzas(id: string, body: Pizza): Observable<Pizza> {
 
 // funcion para añadir a el carrito.
 // Añado tres casuisticas si esta vacia añado producto, si no esta vacia comparo si existe, si existe modifico la account y si existe lo añado.
-  addPizzas(pizza: Pizza){
-      
+public addPizzas(pizza: Pizza){
+     // debugger;
     if(this.mylist.length === 0) {
       pizza.account;
-      this.mylist.push(pizza);
+      this.mylist.push(pizza);      
       this.myCart.next(this.mylist);
+      localStorage.setItem("carrito",JSON.stringify(this.mylist)); 
     }else{
-      const productMod = this.mylist.find((element)=> {
-        console.log(element._id === pizza._id);
-        
-        return element._id === pizza._id         
+      const productMod = this.mylist.find((element)=> {             
+        return ((element._id === pizza._id) && (element.size===pizza.size))
       })
       if(productMod){
         productMod.account = productMod.account +1;
         this.myCart.next(this.mylist);
+        localStorage.setItem("carrito",JSON.stringify(this.mylist)); 
       } else{
         pizza.account;
         this.mylist.push(pizza);
         this.myCart.next(this.mylist);
+        localStorage.setItem("carrito",JSON.stringify(this.mylist)); 
       }
     } 
   } 
-
   
-  deleteProduct(id: string){
+public deleteProduct(id: string, size:string){
+
     this.mylist = this.mylist.filter((pizza) => {
-      return pizza._id != id
+      return (pizza._id != id)
     })
     this.myCart.next(this.mylist);
+    this.setOrders(this.mylist);
+
+  }
+
+public updateProduct(id: string, x:number, size:string){  
+  const position=this.mylist.findIndex((e)=> e._id==id && e.size==size);
+  if (x===-1 && this.mylist[position].account ==1)
+    {this.deleteProduct(id,size)}
+  else {
+    this.mylist[position].account=this.mylist[position].account + x;
+    this.myCart.next(this.mylist);
+    this.setOrders(this.mylist);
+    }
   }
   // Buscar por id.
-  findProductById(id: string) {
+public findProductById(id: string) {
     // Buscamos el id en nuestra lista de carrito.
     return this.mylist.find((element) => {
       // Tiene que coincidir con id de la lista.
@@ -100,7 +129,7 @@ public editPizzas(id: string, body: Pizza): Observable<Pizza> {
   }
 
   // Calcular el total con un reduce.
-  totalCart(){
+public totalCart(){
     const total = this.mylist.reduce(function(acc, pizza){ return acc + (pizza.account * pizza.price);}, 0);
     return total;
   }

@@ -8,41 +8,64 @@ import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.ser
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+  public myCart:Pizza[]=[];
   myCart$ = this.pizzaCartService.myCart$;
 
-  constructor(private pizzaCartService: PizzaCartService ){
-
+  constructor(private pizzaCartService: PizzaCartService ){       
+      let info=localStorage.getItem("carrito");
+      if (info){    
+        info=info.replace('\"', '"');
+        this.myCart=JSON.parse(info)
+        this.pizzaCartService.myCart.next(JSON.parse(info));
+     }      
   }
 
-  totalProduct(price: number, account: number){
+  public totalProduct(price: number, account: number){
     return price * account
   }
 
-  deleteProduct(id:string){
-    this.pizzaCartService.deleteProduct(id);
+  public deleteProduct(id:string, size:string){   
+    this.pizzaCartService.deleteProduct(id,size);
   }
 
   // Actualizar Unidades.
-  updateUnits(operation:string, id:string){
-    // Buscamos por id.
-    const pizza = this.pizzaCartService.findProductById(id);
-    if(pizza){
-      // Restar
+  public updateUnits(operation:string, id:string,size:string){   
+     const pizza = this.pizzaCartService.findProductById(id);
+    if(pizza){  
       if(operation === 'minus' && pizza.account > 0) {
-        pizza.account = pizza.account -1;
+        this.pizzaCartService.updateProduct(id,-1,size);
       } // Sumar
       if(operation === 'add') {
-        pizza.account = pizza.account +1;
+        this.pizzaCartService.updateProduct(id,1,size);
       } // Si llegamos a cero.
       if(pizza.account === 0) {
-        this.deleteProduct(id);
+        this.deleteProduct(id, size);
       }
     }
   }
   
   // Calcular el total.
-  totalCart(){
+  public totalCart(){
     const result = this.pizzaCartService.totalCart();
     return result;
   }
 }
+
+
+
+/*  public carrito?:[pedido];
+
+  public constructor(private msg:MessageService){   
+    this.msg.getObservable().subscribe((value)=> 
+        {
+          debugger;
+          if (value)          
+            { let info=localStorage.getItem("carrito");
+              if (info) {
+                info=info.replace('\"', '"');
+                this.carrito=JSON.parse(info)
+              }   
+            }          
+        }
+    )
+  }*/
