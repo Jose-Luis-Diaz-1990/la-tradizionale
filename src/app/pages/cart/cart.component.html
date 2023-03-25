@@ -13,10 +13,10 @@
         </div>
         <div class="productCart-buttons">
             <div class="productCart-buttons-operators">
-                <p (click)="updateUnits('minus', pizzaBuy._id)"> - </p>
-                <p (click)="updateUnits('add', pizzaBuy._id)"> + </p>
+                <button (click)="updateUnits('minus', pizzaBuy._id)"> - </button>
+                <button (click)="updateUnits('add', pizzaBuy._id)"> + </button>
             </div>
-      
+            <button (click)="deleteProduct(pizzaBuy._id)" > Icono de Papelera</button>
         </div>
     </article>
     <div class="cartTotal">
