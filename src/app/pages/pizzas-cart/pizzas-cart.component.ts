@@ -23,4 +23,18 @@ export class PizzasCartComponent implements OnInit{
     debugger;
     return this.pizzaService.addPizzas(pizza);
   }
+
+  public pagina: number = 0;
+
+  public prevPage(){
+    if(this.pagina > 0){
+      this.pagina -= 4;
+    }
+  }
+
+  public nextPage(){
+    if (this.pagina < 80) {
+      this.pagina += 4 ;
+    }
+  }
 }
