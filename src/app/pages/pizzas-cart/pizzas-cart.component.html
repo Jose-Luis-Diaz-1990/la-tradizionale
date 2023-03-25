@@ -1,38 +1,38 @@
-<div>
-  <h4>Pizzas</h4>
-
-
-    <div *ngFor="let onePizza of pizza"  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px">
-        
-      <p>{{ onePizza.name }}</p>
-        
-        <img [src]="onePizza.picture" style="width: 50px;"/>
-
-        <form  
-        *ngIf="pizzaForm"
-        (submit)="createNewPizza()"
-        [formGroup]="pizzaForm"
-        name="miPizza">
-          
-            <select formControlName="size" (change)="onSectionChange($event.target)">
-              <option value="">Selecciona un tamaño</option>
-              <option value="pequena">Pequeña</option>
-              <option value="mediana">Mediana</option>
-              <option value="familiar">Familiar</option>
-            </select>
-
-        </form>
-        
-
-
-        <p *ngFor="let oneIngredient of onePizza.ingredients">
-          {{oneIngredient.name}}
-        </p>
-      
-        <div class="product-button">
-            <button class="product-button-cart" (click)="addToCart(onePizza)">
-              Añadir
-            </button>
-        </div>
-    </div>
+<div class="menu">
+  <div class="container">
+        <h2 class="menu_h2">Menú</h2>
+  </div>
 </div>
+
+<section class="List">
+  <div class="container">
+      <div class="menu_title">
+        <img>
+      </div>
+    <div class="list_pizzas">
+        <div class="pizza" *ngFor="let onePizza of pizza">
+          <div class="prueba">
+          <img class="pizza_img" [src]="onePizza.picture"/>
+          <select class="select" name="size" [id]="onePizza.name">
+            <option value="pequena">Pequeña</option>
+            <option value="mediana">Mediana</option>
+            <option value="familiar">Familiar</option>
+          </select> 
+            <div class="pizza_name">
+              <h3 class="cheese-pizza__title">{{ onePizza.name }}</h3>
+            </div>
+            <div class="div_ingredient">
+              <p class="pizza_ingredient" *ngFor="let oneIngredient of onePizza.ingredients">
+                {{oneIngredient.name}}
+              </p>
+            </div>
+            <div class="pizza_button">
+              <button class="button" (click)="addToCart(onePizza)">
+                Añadir
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
