@@ -4,15 +4,20 @@ import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.mode
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
 
+
 @Component({
   selector: 'app-pizzas-cart',
   templateUrl: './pizzas-cart.component.html',
   styleUrls: ['./pizzas-cart.component.scss']
 })
+
 export class PizzasCartComponent implements OnInit{
+
     public pizza?: Pizza[] = [];
     public pizzaForm?: FormGroup;
-    public sizeOptions=sizes;    
+    public sizeOptions=sizes;  
+    public cantidadPizzas = 0;
+
     
   constructor(
     private pizzaService: PizzaCartService,
@@ -29,7 +34,8 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   
-public addToCart( pizza: Pizza){   
+public addToCart( pizza: Pizza){
+this.cantidadPizzas++;
     pizza.size=this.pizzaForm?.get("size")?.value;
     if (pizza.size=="mediana") 
     {
@@ -40,8 +46,10 @@ public addToCart( pizza: Pizza){
       pizza.price=pizza.price*1.15;
     }
 
+
     return this.pizzaService.addPizzas(pizza);
   }
+  
 
   public pagina: number = 0;
 
@@ -56,4 +64,6 @@ public addToCart( pizza: Pizza){
       this.pagina += 4 ;
     }
   }
+
+  
 }

@@ -31,6 +31,9 @@
            </form>
       </div>
     </div>
+
+    <div>Hay {{ cantidadPizzas }} pizzas en el carrito.</div>
+    
     <div class="pagination-container">
       <div class="pagination-button">
         <img src="../../../assets/images/previous.png" alt="Previous" [ngStyle]="pagina <= 0 ? {'display': 'none'} : null" (click)="prevPage()" class="btn-img">

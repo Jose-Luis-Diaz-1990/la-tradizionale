@@ -9,7 +9,7 @@
 
   <nav class="navbar" [ngClass]="{'show': showMenu}">
     <a href="#home" [routerLink]="['home']">Home</a>
-    <a href="#pizzaCart" [routerLink]="['pizzaCart']">PizzaCart</a>
+    <a href="#pizzaCart" [routerLink]="['pizzaCart']">Pizza</a>
     <a href="#menu" [routerLink]="['create-pizza']">Mi pizza</a>
     <a *ngIf="!isLogged" [routerLink]="['login']" class="user">
       <img src="../../../../assets/images/usuario.png"/>
@@ -17,9 +17,6 @@
     <a *ngIf="isLogged" [routerLink]="['cart']">
       <img href="#" class="shop" src="../../../../assets/images/carrito-de-compras.png"  />
     </a>
-    <div class="cart-icon">
-      <i class="fa fa-shopping-cart"></i>
-    </div>
     <a *ngIf="isLogged"
        class="user" (click)="cerrarSesion()"> <img src="../../../../assets/images/cerrar-sesion.png"/></a>
   </nav>
