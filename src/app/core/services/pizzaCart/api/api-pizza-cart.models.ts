@@ -8,6 +8,7 @@ export interface apiPizza {
     dip: string;
     ingredients: apiIngredient[];
     price: number;
+    pricebase:number;
     account: number;
     cantidad: number;
     picture: string;

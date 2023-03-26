@@ -39,7 +39,7 @@ public getPizzas(): Observable<Pizza[]>{
 public getOrders(){
   const carrito= localStorage.getItem("carrito");
   if (carrito) {return JSON.parse(carrito)}
-  return null;
+  return [];
 }
 
 public setOrders(value:Pizza[]){
@@ -75,9 +75,9 @@ public editPizzas(id: string, body: Pizza): Observable<Pizza> {
 
 // funcion para añadir a el carrito.
 // Añado tres casuisticas si esta vacia añado producto, si no esta vacia comparo si existe, si existe modifico la account y si existe lo añado.
-public addPizzas(pizza: Pizza){
-     // debugger;
-    if(this.mylist.length === 0) {
+public addPizzas(pizza: Pizza){   
+     this.mylist=this.getOrders();
+    if (this.mylist.length === 0) {
       pizza.account;
       this.mylist.push(pizza);      
       this.myCart.next(this.mylist);

@@ -6,8 +6,9 @@ export interface Pizza {
     mass: string;
     size: string;
     dip: string;
-    ingredients: apiTransformIngredients[];
+    ingredients: apiTransformIngredients[];    
     price: number;
+    pricebase:number;
     account: number;
     picture: string;
 }

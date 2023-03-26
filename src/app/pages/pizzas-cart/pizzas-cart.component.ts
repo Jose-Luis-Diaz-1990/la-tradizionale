@@ -15,9 +15,7 @@ export class PizzasCartComponent implements OnInit{
 
     public pizza: Pizza[] = [];
     public pizzaForm?: FormGroup;
-    public sizeOptions=sizes;  
-    public cantidadPizzas = 0;
-
+    public sizeOptions=sizes;   
     
   constructor(
     private pizzaService: PizzaCartService,
@@ -34,19 +32,20 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   
-public addToCart( pizza: Pizza){
-this.cantidadPizzas++;
+public addToCart( pizza: Pizza){     
     pizza.size=this.pizzaForm?.get("size")?.value;
     if (pizza.size=="mediana") 
     {
-      pizza.price=pizza.price*1.10;
+      pizza.price=Number((pizza.pricebase*1.10).toFixed(2));
     }
     else if (pizza.size=="familiar")
     {
-      pizza.price=pizza.price*1.15;
+      pizza.price=Number((pizza.pricebase*1.15).toFixed(2));
     }
-
-
+    else if (pizza.size=="pequeña")
+    {
+      pizza.price=Number((pizza.pricebase).toFixed(2));
+    }
     return this.pizzaService.addPizzas(pizza);
   }
   
