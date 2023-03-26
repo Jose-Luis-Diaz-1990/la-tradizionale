@@ -7,7 +7,7 @@
 <section class="List">
   <div class="container">
     <div class="list_pizzas">
-        <div class="pizza" *ngFor="let onePizza of pizza">
+        <div class="pizza" *ngFor="let onePizza of pizza | pagination:pagina ">
           <form>
           <div class="prueba">
           <img class="pizza_img" [src]="onePizza.picture"/>

@@ -13,7 +13,7 @@ import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
 
 export class PizzasCartComponent implements OnInit{
 
-    public pizza?: Pizza[] = [];
+    public pizza: Pizza[] = [];
     public pizzaForm?: FormGroup;
     public sizeOptions=sizes;  
     public cantidadPizzas = 0;
