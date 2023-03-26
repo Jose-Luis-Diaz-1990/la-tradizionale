@@ -12,6 +12,9 @@ export interface apiPizza {
     cantidad: number;
     picture: string;
     createdAt?: string;
-    updatedAt?: string;
-    
+    updatedAt?: string;    
 }
+
+export type Sizes= "pequeña"| "mediana"| "familiar";
+
+

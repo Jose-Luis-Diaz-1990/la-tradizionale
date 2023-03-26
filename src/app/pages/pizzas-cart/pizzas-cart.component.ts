@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
+import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
 
 @Component({
   selector: 'app-pizzas-cart',
@@ -8,9 +9,11 @@ import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.ser
   styleUrls: ['./pizzas-cart.component.scss']
 })
 export class PizzasCartComponent implements OnInit{
-    public pizza: Pizza[] = [];
+    public pizza?: Pizza[] = [];
+    public pizzaForm?: FormGroup;
+    public sizeOptions=sizes;   
 
-  constructor(
+  public constructor(
     private pizzaService: PizzaCartService,
     private fb: FormBuilder)
      {
@@ -25,7 +28,7 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   
-  public addToCart( pizza: Pizza){   
+public addToCart( pizza: Pizza){   
     pizza.size=this.pizzaForm?.get("size")?.value;
     if (pizza.size=="mediana") 
     {

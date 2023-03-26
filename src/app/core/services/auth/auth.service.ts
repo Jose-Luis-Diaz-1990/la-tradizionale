@@ -26,7 +26,7 @@ export class AuthService {
               const userToStore=JSON.stringify({token:res.token, id:res.user._id, email:res.user.email});
               localStorage.setItem(TOKEN_KEY, userToStore);
               this.userLogged$.next(true);
-              this.router.navigate(['inicio']);
+              this.router.navigate(['home']);
             })
     )
   }

@@ -8,8 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    
+    HeaderComponent    
   ],
   imports: [
     CommonModule,
@@ -18,9 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
 
   exports: [
-    HeaderComponent,
-
-
+    HeaderComponent
   ]
 })
 export class 
