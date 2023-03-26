@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
@@ -42,7 +42,6 @@ public addToCart( pizza: Pizza){
 
     return this.pizzaService.addPizzas(pizza);
   }
-}
 
   public pagina: number = 0;
 
