@@ -4,11 +4,13 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent    
+    HeaderComponent,
+    CartComponent    
   ],
   imports: [
     CommonModule,

@@ -15,6 +15,7 @@
         <div class="productCart-buttons">
             <div class="productCart-buttons-operators">
                 <button (click)="updateUnits('minus', pizzaBuy._id, pizzaBuy.size)"> - </button>
+                <span>{{pizzaBuy.account}}</span>
                 <button (click)="updateUnits('add', pizzaBuy._id, pizzaBuy.size)"> + </button>
             </div>
             <button (click)="deleteProduct(pizzaBuy._id, pizzaBuy.size)" > Icono de Papelera</button>

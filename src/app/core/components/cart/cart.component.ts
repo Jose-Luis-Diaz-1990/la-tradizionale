@@ -1,6 +1,7 @@
-import { Pizza } from './../../core/services/pizzaCart/pizza-cart-transform.models';
+import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { Component } from '@angular/core';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
+
 
 @Component({
   selector: 'app-cart',

@@ -17,6 +17,9 @@ export class HeaderComponent  {
   public isLogged: boolean = false;
   public showMenu: boolean = false;
 
+   // Para mostrar el carrito segun tenga elementos.
+   public viewCart: boolean = false;
+
   constructor(
     private router: Router,
     private auth:AuthService,
@@ -42,6 +45,9 @@ export class HeaderComponent  {
     this.auth.logout();
   }
 
+  onToggleCart(){
+    this.viewCart = !this.viewCart
+  }
 
 
   }
