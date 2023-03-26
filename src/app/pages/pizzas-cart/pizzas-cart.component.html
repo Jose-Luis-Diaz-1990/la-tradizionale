@@ -7,14 +7,13 @@
 <section class="List">
   <div class="container">
     <div class="list_pizzas">
-        <div class="pizza" *ngFor="let onePizza of pizza | pagination:pagina ">
+        <div class="pizza" *ngFor="let onePizza of pizza">
+          <form>
           <div class="prueba">
           <img class="pizza_img" [src]="onePizza.picture"/>
-          <select class="select" name="size" [id]="onePizza.name">
-            <option value="pequena">Pequeña</option>
-            <option value="mediana">Mediana</option>
-            <option value="familiar">Familiar</option>
-          </select> 
+            <select formControlName="size">   
+              <option *ngFor="let s of sizeOptions" value="{{s}}">{{s | titlecase}}</option>     
+            </select>
             <div class="pizza_name">
               <h3 class="cheese-pizza__title">{{ onePizza.name }}</h3>
             </div>
@@ -27,9 +26,9 @@
               <button class="button" (click)="addToCart(onePizza)">
                 Añadir
               </button>
-            </div>
-            
+            </div>             
           </div>
+           </form>
       </div>
     </div>
 

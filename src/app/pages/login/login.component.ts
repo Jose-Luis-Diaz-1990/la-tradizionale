@@ -22,11 +22,10 @@ export class LoginComponent {
     });
   }
 
-  public login() {
+  public login() {   
     if (!this.loginForm?.valid) { return; }
-    const user: IUser = this.loginForm.value;
-
-    this.auth.login(user).subscribe({
+    const user: IUser = this.loginForm.value;   
+    this.auth.login(user).subscribe({    
       next: (res) => {
         this.loginForm?.reset();
         alert("Te has identificado correctamente");
@@ -46,6 +45,7 @@ export class LoginComponent {
   }
 
   public register(){
+    debugger;
     this.router.navigate(['registro'])
   }
 
