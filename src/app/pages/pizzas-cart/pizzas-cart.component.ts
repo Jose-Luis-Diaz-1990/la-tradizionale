@@ -12,9 +12,9 @@ import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
 export class PizzasCartComponent implements OnInit{
     public pizza?: Pizza[] = [];
     public pizzaForm?: FormGroup;
-    public sizeOptions=sizes;   
-
-  public constructor(
+    public sizeOptions=sizes;    
+    
+  constructor(
     private pizzaService: PizzaCartService,
     private fb: FormBuilder)
      {
@@ -41,8 +41,8 @@ public addToCart( pizza: Pizza){
     }
 
     return this.pizzaService.addPizzas(pizza);
-   }
   }
+}
 
   public pagina: number = 0;
 
