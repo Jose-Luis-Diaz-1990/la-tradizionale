@@ -11,17 +11,33 @@ export class PizzasCartComponent implements OnInit{
     public pizza: Pizza[] = [];
 
   constructor(
-    private pizzaService: PizzaCartService
-  ) {}
+    private pizzaService: PizzaCartService,
+    private fb: FormBuilder)
+     {
+      this.pizzaForm = this.fb.group({
+        size: new FormControl('pequeña'),
+      });
+     }
 
-  public ngOnInit(): void { 
+  public ngOnInit(): void {     
     this.pizzaService.getPizzas().subscribe((pizza: Pizza[])=> {
       this.pizza = pizza;
     });
   }
-  addToCart( pizza: Pizza){
-    debugger;
+  
+  public addToCart( pizza: Pizza){   
+    pizza.size=this.pizzaForm?.get("size")?.value;
+    if (pizza.size=="mediana") 
+    {
+      pizza.price=pizza.price*1.10;
+    }
+    else if (pizza.size=="familiar")
+    {
+      pizza.price=pizza.price*1.15;
+    }
+
     return this.pizzaService.addPizzas(pizza);
+   }
   }
 
   public pagina: number = 0;
