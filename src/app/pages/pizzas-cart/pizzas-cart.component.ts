@@ -2,16 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 
+
 @Component({
   selector: 'app-pizzas-cart',
   templateUrl: './pizzas-cart.component.html',
   styleUrls: ['./pizzas-cart.component.scss']
 })
+
 export class PizzasCartComponent implements OnInit{
     public pizza: Pizza[] = [];
+    public cantidadPizzas = 0;
 
   constructor(
-    private pizzaService: PizzaCartService
+    private pizzaService: PizzaCartService,
+
   ) {}
 
   public ngOnInit(): void { 
@@ -19,10 +23,11 @@ export class PizzasCartComponent implements OnInit{
       this.pizza = pizza;
     });
   }
-  addToCart( pizza: Pizza){
-    debugger;
+  addToCart(pizza: Pizza){
+    this.cantidadPizzas++; // Incrementar la variable antes de devolver la pizza
     return this.pizzaService.addPizzas(pizza);
   }
+  
 
   public pagina: number = 0;
 
@@ -37,4 +42,6 @@ export class PizzasCartComponent implements OnInit{
       this.pagina += 4 ;
     }
   }
+
+  
 }

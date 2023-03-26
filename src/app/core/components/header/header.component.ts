@@ -1,6 +1,10 @@
+import { PizzaCartService } from './../../services/pizzaCart/pizza-cart.service';
+import { Pizza } from './../../services/pizzaCart/pizza-cart-transform.models';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+
 
 
 @Component({
@@ -9,13 +13,14 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  {
-
+  public cantidadPizzas: number = 0;
   public isLogged: boolean = false;
   public showMenu: boolean = false;
 
   constructor(
     private router: Router,
-    private auth:AuthService
+    private auth:AuthService,
+ 
   ) {}
 
   //Ruta que lleva a la página de not-found, se accede a ella cuando la url no existe.
@@ -36,5 +41,8 @@ export class HeaderComponent  {
   public cerrarSesion():void{
     this.auth.logout();
   }
+
+
+
   }
 
