@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+
+/* Estilos para el contenedor del menú */
+.menu {
+    background-position: center center;
+    background-size: cover;
+    height: 400px;
+    position: relative;
+    background-image: url(https://cdn.pixabay.com/photo/2020/04/29/03/40/pizza-5107054_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    color: #fff;
+    margin-bottom: -5%;
+  }
+  
+  .menu_h2 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    color: #eae0e0;
+    
+    font-size: 70px;
+
+    font-family: 'La Belle Aurore', cursive; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 50%;
+  }
+  
+  
+  .breadcrumbs{
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    span{
+        border-bottom: 2px solid rgba(255,255,255,.1);
+        a{
+            color: white;
+        }
+    }
+}
+  
+  /* Estilos para la sección de la lista de pizzas */
+  .List {
+    color: #fff;
+    padding: 100px 0;
+  }
+  .container{
+    width: 80%;
+    margin: 0 auto;
+    
+  }
+  
+  .menu_title {
+    text-align: center;
+    
+  }
+  
+  
+  .deg1, .deg2, .deg3 {
+    background-color: #fff;
+    height: 5px;
+    left: 0;
+    position: absolute;
+    transform-origin: center;
+    width: 100%;
+  }
+  
+  .deg1 {
+    top: 0;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .deg2 {
+    top: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0.1s;
+  }
+  
+  .deg3 {
+    top: 24px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0.2s;
+  }
+  
+  .flip.active .deg1 {
+    transform: rotate(45deg);
+  }
+  
+  .flip.active .deg2 {
+    transform: rotate(45deg);
+  }
+  
+  .flip.active .deg3 {
+    transform: rotate(-45deg);
+  }
+  
+  .list_pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .pizza {
+   
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 250px;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    border-radius: 10%
+}
+  
+  .pizza:hover {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+  }
+  
+  .pizza_img {
+    margin-bottom: 20px;
+    width: 200px;
+    border-radius: 10%;
+    
+  }
+  
+  .select {
+    font-size: 16px;
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    margin-bottom: 10%;
+  }
+  
+  /* Estilo para las opciones del elemento select */
+  .select option {
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+  }
+  
+  
+  .pizza_name {
+    margin-bottom: 20px;
+  }
+  
+  .pizza_name h3 {
+    font-size: 17px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .div_ingredient {
+    margin-bottom: 20px;
+  }
+  
+  .pizza_ingredient {
+    color: #6c757d;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+ 
+  .pizza_button{
+   
+    margin-top: 10px;
+  }
+
+  .button {
+    margin-top: 80%;
+    font-family: "Raleway", sans-serif;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 4%;
+    color: #fff;
+    border: 0.2rem solid rgba(255, 255, 255, 0.3);
+    font-size: 1.7rem;
+    background: none;
+    padding: 1rem 3rem;
+  }
+  
+  
+.pagination-container {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn-img {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    margin: 0 5px;
+    width: 35px;
+    
+  }
+  

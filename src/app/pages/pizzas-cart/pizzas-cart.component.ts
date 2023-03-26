@@ -1,4 +1,3 @@
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
@@ -12,9 +11,9 @@ import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
 export class PizzasCartComponent implements OnInit{
     public pizza?: Pizza[] = [];
     public pizzaForm?: FormGroup;
-    public sizeOptions=sizes;    
-    
-  constructor(
+    public sizeOptions=sizes;   
+
+  public constructor(
     private pizzaService: PizzaCartService,
     private fb: FormBuilder)
      {
@@ -28,7 +27,7 @@ export class PizzasCartComponent implements OnInit{
       this.pizza = pizza;
     });
   }
-
+  
 public addToCart( pizza: Pizza){   
     pizza.size=this.pizzaForm?.get("size")?.value;
     if (pizza.size=="mediana") 
@@ -41,5 +40,20 @@ public addToCart( pizza: Pizza){
     }
 
     return this.pizzaService.addPizzas(pizza);
+   }
+  }
+
+  public pagina: number = 0;
+
+  public prevPage(){
+    if(this.pagina > 0){
+      this.pagina -= 4;
+    }
+  }
+
+  public nextPage(){
+    if (this.pagina < 80) {
+      this.pagina += 4 ;
+    }
   }
 }

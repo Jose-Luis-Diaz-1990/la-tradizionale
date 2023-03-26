@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { PizzasCartRoutingModule } from './pizzas-cart-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/pages/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     PizzasCartRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class PizzasCartModule { }

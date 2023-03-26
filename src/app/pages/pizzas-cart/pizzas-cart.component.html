@@ -1,25 +1,41 @@
-<div>
-  <h4>Pizzas</h4>
-    <div *ngFor="let onePizza of pizza"  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px">        
-      <p>{{ onePizza.name }}</p>        
-        <img [src]="onePizza.picture" style="width: 50px;"/>
-        <form  
-            *ngIf="pizzaForm"           
-            [formGroup]="pizzaForm"
-            name="miPizza">          
+<div class="menu">
+  <div class="container">
+        <h2 class="menu_h2">Menú</h2>
+  </div>
+</div>
+
+<section class="List">
+  <div class="container">
+    <div class="list_pizzas">
+        <div class="pizza" *ngFor="let onePizza of pizza | pagination:pagina ">
+          <form>
+          <div class="prueba">
+          <img class="pizza_img" [src]="onePizza.picture"/>
             <select formControlName="size">   
               <option *ngFor="let s of sizeOptions" value="{{s}}">{{s | titlecase}}</option>     
             </select>
-          
-        <p *ngFor="let oneIngredient of onePizza.ingredients">
-          {{oneIngredient.name}}
-        </p>
-      
-        <div class="product-button">
-            <button class="product-button-cart" (click)="addToCart(onePizza)">
-              Añadir
-            </button>
-        </div>
-      </form>   
+            <div class="pizza_name">
+              <h3 class="cheese-pizza__title">{{ onePizza.name }}</h3>
+            </div>
+            <div class="div_ingredient">
+              <p class="pizza_ingredient" *ngFor="let oneIngredient of onePizza.ingredients">
+                {{oneIngredient.name}}
+              </p>
+            </div>
+            <div class="pizza_button">
+              <button class="button" (click)="addToCart(onePizza)">
+                Añadir
+              </button>
+            </div>             
+          </div>
+           </form>
+      </div>
     </div>
-</div>
+    <div class="pagination-container">
+      <div class="pagination-button">
+        <img src="../../../assets/images/previous.png" alt="Previous" [ngStyle]="pagina <= 0 ? {'display': 'none'} : null" (click)="prevPage()" class="btn-img">
+        <img src="../../../assets/images/next.png"alt="Next" [ngStyle]="pagina >= 80 ? {'display': 'none'} : null" (click)="nextPage()" class="btn-img">
+      </div>
+    </div>
+  </div>
+</section>
