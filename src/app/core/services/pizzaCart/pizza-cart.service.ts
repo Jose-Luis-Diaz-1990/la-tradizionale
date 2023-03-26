@@ -99,11 +99,10 @@ public addPizzas(pizza: Pizza){
     } 
   } 
   
-public deleteProduct(id: string, size:string){
-
-    this.mylist = this.mylist.filter((pizza) => {
-      return (pizza._id != id)
-    })
+public deleteProduct(id: string, size:string){    
+    this.mylist = this.mylist.filter((pizza) => {      
+      return ((pizza._id != id) || (pizza._id==id && pizza.size!=size));
+      })
     this.myCart.next(this.mylist);
     this.setOrders(this.mylist);
 
