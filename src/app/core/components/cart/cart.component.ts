@@ -1,7 +1,9 @@
-import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
-
+import { OrderItemService } from '../../services/orders/order-item.service';
+import { Order } from '../../services/orders/orders.transform.models';
 
 @Component({
   selector: 'app-cart',
@@ -10,9 +12,14 @@ import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.ser
 })
 export class CartComponent {
   public myCart:Pizza[]=[];
+  public order$?: Observable<Order[]>
+
   myCart$ = this.pizzaCartService.myCart$;
 
-  constructor(private pizzaCartService: PizzaCartService ){       
+  constructor(
+    private pizzaCartService: PizzaCartService,
+    private OrderItemService: OrderItemService 
+    ){       
       let info=localStorage.getItem("carrito");
       if (info){    
         info=info.replace('\"', '"');
@@ -50,8 +57,20 @@ export class CartComponent {
     const result = this.pizzaCartService.totalCart();
     return result;
   }
+  
+  public addOrder(){
+    const total = this.pizzaCartService.totalCart();
+    const items = this.myCart;
+    const order: Order = {
+      items: items.map(item => ({pizza: item._id})),
+      total: total
+    }; 
+    console.log(order);
+    
+    this.OrderItemService.createOrder(order);
+  }
 }
-
+  
 
 
 /*  public carrito?:[pedido];
