@@ -40,7 +40,7 @@ public getPizzas(): Observable<Pizza[]>{
   );
 }
 
-public getOrders(){
+public getOrders():Pizza[]{
   const carrito= localStorage.getItem("carrito");
   if (carrito) {return JSON.parse(carrito)}
   return [];

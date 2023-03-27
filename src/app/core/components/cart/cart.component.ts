@@ -12,7 +12,7 @@ import { Order } from '../../services/orders/orders.transform.models';
 })
 export class CartComponent {
   public myCart:Pizza[]=[];
-  public order$?: Observable<Order[]>
+  public order$?: Observable<Order[]>  
 
   myCart$ = this.pizzaCartService.myCart$;
 
@@ -60,13 +60,13 @@ export class CartComponent {
   
   public addOrder(){
     const total = this.pizzaCartService.totalCart();
-    const items = this.myCart;
+    const items =this.pizzaCartService.getOrders();        
+   // const items = this.myCart;
     const order: Order = {
-      items: items.map(item => ({pizza: item._id})),
+      items: items.map((order)=> {return order._id}),
       total: total
-    }; 
+    };   
     console.log(order);
-    
     this.OrderItemService.createOrder(order);
   }
 

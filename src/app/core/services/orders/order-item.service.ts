@@ -2,10 +2,8 @@ import { ApiOrder } from './api/api-orders.models';
 import { Injectable } from '@angular/core';
 import { map, Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Item, Order } from './orders.transform.models';
+import { Order } from './orders.transform.models';
 import { ApiOrdersService } from './api/api-orders.service';
-
-
 
 
 @Injectable({
@@ -18,10 +16,10 @@ constructor(
 ){}
 
 
-public createOrder(order: Order): Observable<Order> {
+public createOrder(order: Order): Observable<ApiOrder> {  
   return this.apiOrderService.createApiOrder(order).pipe(
-    map((pizza) => {
-          return pizza;
+    map((pizza) => {      
+          return pizza;          
     })
   );
 }
