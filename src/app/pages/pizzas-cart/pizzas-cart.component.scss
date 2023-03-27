@@ -118,7 +118,6 @@
     text-align: center;
     transition: all 0.3s ease;
     width: 250px;
-    background-size: cover;
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: multiply;
     border-radius: 10%
@@ -148,21 +147,22 @@
   
   /* Estilo para las opciones del elemento select */
   .select option {
-    font-size: 16px;
+    font-size: 17px;
     color: #333;
     background-color: #fff;
   }
-  
   
   .pizza_name {
     margin-bottom: 20px;
   }
   
   .pizza_name h3 {
-    font-size: 17px;
+    font-size: 15px;
     margin: 0;
     text-transform: uppercase;
+    word-wrap: break-word;
   }
+  
   
   .div_ingredient {
     margin-bottom: 20px;

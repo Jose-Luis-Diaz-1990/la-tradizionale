@@ -1,58 +1,169 @@
-.productCart-wrapper{
+
+*{
+  font-family: "Raleway", sans-serif;
+}
+
+
+.productCart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+  
+  .prodctCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .img{
+    width: 100px;
+    border-radius: 10%;
+  }
+
+
+  .name{
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #78a62b;
+    font-weight: bold;
+  }
+  
+  .product-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .product-body p {
+    font-weight: bold;
+    
+  }
+  
+  .product-body-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info{
+    font-size: 13px;
+  }
+  
+  .productCart-total {
+    flex-basis: 20%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .productCart-total p:first-of-type {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .productCart-total p:last-of-type {
+    font-size: 0.8rem;
+  }
+  
+  .productCart-buttons {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .productCart-buttons button {
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .productCart-buttons button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .productCart-buttons-operators {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .productCart-buttons-operators span {
+    padding: 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+  }
+  
+  .productCart-buttons-operators button:first-of-type {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  
+  .productCart-buttons-operators button:last-of-type {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  .cartTotal {
+    margin-top: 1rem;
     padding: 1rem;
-    .productCart{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        &-body{
-            flex-basis: 50%;
-        }
-        &-total{
-            flex-basis: 20%;
-        }
-        &-buttons{
-            flex-basis: 30%;
-        }
-        &-body-info{
-            display: flex;
-            gap:1rem;
-        }
-        &-buttons{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            &-operators{
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                span{
-                    border: 1px solid lightgrey;
-                    border-radius: 0.5rem;
-                    padding: 0.5rem;
-                }
-            }
-        }
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .cart-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #78a62b;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 3%;
+  }
+  
+  .cart-btn:hover {
+    background-color: #333333;
+  }
+  
+
+  .cart-closed {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .productCart-wrapper {
+      max-width: 800px; 
+      margin: 0 auto; 
+      padding: 0.5rem; 
     }
-    .cartTotal{
-        padding: 1rem;
-        &-total{
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+    
+    .prodctCart {
+      flex-direction: column; /* Cambiar la dirección del flex para dispositivos móviles */
     }
-    .cart-total{
-       width: 50%;
-       align-self: center;
-       border: none;
-       border-radius: 0.25rem;
-       margin: 0.75rem;
-       background-color: black;
-       color: white;
-       cursor: pointer;
-       padding: 1rem;
+    
+    .product-body {
+      flex-direction: column; 
+      flex-basis: 100%; 
+      margin-top: 0.5rem; 
     }
-}
+    
+    .productCart-total, .productCart-buttons {
+      flex-basis: 100%; 
+      margin-top: 0.5rem; 
+    }
+  }

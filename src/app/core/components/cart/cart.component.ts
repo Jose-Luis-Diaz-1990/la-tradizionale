@@ -12,6 +12,10 @@ export class CartComponent {
   public myCart:Pizza[]=[];
   myCart$ = this.pizzaCartService.myCart$;
 
+
+  cartIsClosed = false;
+
+
   constructor(private pizzaCartService: PizzaCartService ){       
       let info=localStorage.getItem("carrito");
       if (info){    
@@ -50,12 +54,13 @@ export class CartComponent {
     const result = this.pizzaCartService.totalCart();
     return result;
   }
+
+
 }
 
 
 
 /*  public carrito?:[pedido];
-
   public constructor(private msg:MessageService){   
     this.msg.getObservable().subscribe((value)=> 
         {

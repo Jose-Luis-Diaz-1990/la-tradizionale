@@ -1,11 +1,11 @@
 <div class="productCart-wrapper">
     <article class="prodctCart" *ngFor="let pizzaBuy of myCart$ | async">
         <div class="product-body">
-            <p>{{pizzaBuy.name}}</p>
+            <p class="name">{{pizzaBuy.name}}</p>
             <div class="product-body-info">
-                <p>{{pizzaBuy.size}}</p>
-                <p>{{pizzaBuy.price}}</p>
-                <img [src]="pizzaBuy.picture" style="width: 50px;"/>
+                <p class="info">{{pizzaBuy.size}}</p>
+                <p class="info">{{pizzaBuy.price}}</p>
+                <img class="img" [src]="pizzaBuy.picture"/>
             </div>
         </div>
         <div class="productCart-total">
@@ -18,7 +18,10 @@
                 <span>{{pizzaBuy.account}}</span>
                 <button (click)="updateUnits('add', pizzaBuy._id, pizzaBuy.size)"> + </button>
             </div>
-            <button (click)="deleteProduct(pizzaBuy._id, pizzaBuy.size)" > Icono de Papelera</button>
+            <button (click)="deleteProduct(pizzaBuy._id, pizzaBuy.size)">
+                <img src="../../../../assets/images/papelera.png" alt="Icono de Papelera" />
+              </button>
+            
         </div>
     </article>
     <div class="cartTotal">
@@ -26,3 +29,9 @@
     </div>
     <button class="cart-btn"> Ir a mi cesta </button>
 </div>
+
+
+
+
+
+

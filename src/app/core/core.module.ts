@@ -1,3 +1,5 @@
+import { FooterComponent } from './components/footer/footer.component';
+import { LoadingComponent } from './components/loading/loading.component'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
@@ -10,6 +12,8 @@ import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     HeaderComponent,
+    LoadingComponent,
+    FooterComponent,
     CartComponent    
   ],
   imports: [
@@ -19,7 +23,9 @@ import { CartComponent } from './components/cart/cart.component';
   ],
 
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    LoadingComponent
   ]
 })
 export class 

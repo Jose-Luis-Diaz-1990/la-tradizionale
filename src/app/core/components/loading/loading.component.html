@@ -1,0 +1,8 @@
+
+<!---NgIf comprueba si la variable showLoading$ es verdadera y, si es así, se muestra el mensaje: "Loading…".-->
+<div
+    *ngIf="showLoading$ | async"
+    class="loading"
+>
+<img class="gif" src="../../../../assets/images/loading.gif" />
+</div>
