@@ -69,12 +69,11 @@ export class CartComponent {
     
     this.OrderItemService.createOrder(order);
   }
-}
+
   
 
 
 /*  public carrito?:[pedido];
-
   public constructor(private msg:MessageService){   
     this.msg.getObservable().subscribe((value)=> 
         {

@@ -1,0 +1,16 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.loading {
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+}/*# sourceMappingURL=loading.component.css.map */

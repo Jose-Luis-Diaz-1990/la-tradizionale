@@ -59,7 +59,6 @@
     color: white;
     border: 1px solid black;
     border-radius: 50%;
-    background-color: red;
     height: 20px;
     width: 20px;
     p{
@@ -80,7 +79,6 @@
   position: absolute;
   background-color: white;
   border-radius: 0.5rem;
-  border: 1px solid red;
   right: 0px;
   top: 83px;
   min-width: 40%;
@@ -104,6 +102,7 @@
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    background-color: black;
   }
 
   .navbar.show {
@@ -128,10 +127,61 @@
     right: 20px;
     top: 20px;
   }
-  .user img{
-    margin-right: 10px;
+  .user img {
+    height: 30px;
+    border-radius: 50%;
+   margin-left: 10px;
+    
   }
 }
+
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    background-color: black;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
+  .navbar a {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #f00;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .user img {
+    height: 30px;
+    border-radius: 50%;
+   margin-left: 10px;
+    
+  }
+}
+
+
 
 
 

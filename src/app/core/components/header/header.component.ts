@@ -17,6 +17,9 @@ export class HeaderComponent  {
   public isLogged: boolean = false;
   public showMenu: boolean = false;
 
+
+  cartIsClosed = false;
+
    // Para mostrar el carrito segun tenga elementos.
    public viewCart: boolean = false;
 
@@ -51,4 +54,3 @@ export class HeaderComponent  {
 
 
   }
-

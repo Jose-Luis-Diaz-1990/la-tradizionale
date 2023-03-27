@@ -1,0 +1,47 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.loading {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.gif{
+    width: 500px;}
+
+
+
+    @media screen and (max-width: 768px) {
+        :host {
+        position: fixed;
+        top: 0;
+        left: 0;
+        }
+        
+        .loading {
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: white;
+        height: 100vh;
+        background-color: black;
+        opacity: 0.8;
+        }
+        
+        .gif{
+        width: 100%;
+        max-width: 500px;
+        }
+        }
+        
+        

@@ -1,7 +1,8 @@
+import { LoadingService } from './../loading/loading.service';
 import { apiPizza } from './api/api-pizza-cart.models';
 import { Pizza } from './pizza-cart-transform.models';
 import { Injectable } from '@angular/core';
-import { map, Observable, BehaviorSubject } from 'rxjs';
+import { map, Observable, BehaviorSubject, tap} from 'rxjs';
 import { ApiPizzaCartService } from './api/api-pizza-cart.service';
 
 @Injectable({
@@ -17,7 +18,8 @@ myCart = new BehaviorSubject<Pizza[]>([]);
 myCart$ = this.myCart.asObservable();
 
 constructor( 
-  private apiPizzaService: ApiPizzaCartService) {
+  private apiPizzaService: ApiPizzaCartService,
+  private loadingService: LoadingService) {
     const curChart = this.getOrders();
     if (curChart){
       this.mylist=curChart
@@ -26,13 +28,15 @@ constructor(
 
 //Funcion que transforma los datos en bruto del GET al api
 public getPizzas(): Observable<Pizza[]>{
+  this.loadingService.showLoading();
   return this.apiPizzaService.getApiPizzas().pipe(
     map((pizzas: apiPizza[]) => {
       return pizzas.map((pizza) => {
         delete pizza.createdAt, pizza.updatedAt;
           return pizza;
       });
-    })
+    }),
+    tap(() => this.loadingService.hideLoading())
   );
 }
 

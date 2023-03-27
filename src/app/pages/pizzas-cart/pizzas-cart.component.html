@@ -1,6 +1,6 @@
 <div class="menu">
   <div class="container">
-        <h2 class="menu_h2">Menú</h2>
+        <h2 class="menu_h2">Pizzas</h2>
   </div>
 </div>
 
@@ -13,7 +13,7 @@
         <div class="pizza" *ngFor="let onePizza of pizza | pagination:pagina ">          
           <div class="prueba">
           <img class="pizza_img" [src]="onePizza.picture"/>
-            <select formControlName="size">   
+            <select class="select" formControlName="size">   
               <option *ngFor="let s of sizeOptions" value="{{s}}">{{s | titlecase}}</option>     
             </select>
             <div class="pizza_name">
