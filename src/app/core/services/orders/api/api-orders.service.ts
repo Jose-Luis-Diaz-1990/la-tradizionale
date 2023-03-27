@@ -24,8 +24,9 @@ export class ApiOrdersService {
   }
   //post para crear una nueva pizza pasando el body con schcema de la interface transformada
   public createApiOrder(body: Order) {
+    debugger;
     console.log(body);
-    return this.http.post<ApiOrder>(`${API_PIZZA_URL}/order`, body);
+    return this.http.post<ApiOrder>(`${API_PIZZA_URL}/order/pizzas`, body);
   }
   //put para actualizar una de las pizas donde paso su id y el body con el schema de la interface
   public editApiOrder(id: string, body: Order) {
