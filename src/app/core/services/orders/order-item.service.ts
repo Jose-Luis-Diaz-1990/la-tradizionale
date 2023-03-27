@@ -16,10 +16,11 @@ constructor(
 ){}
 
 
-public createOrder(order: Order): Observable<ApiOrder> {  
+public createOrder(order: Order): Observable<Order> {
+  
   return this.apiOrderService.createApiOrder(order).pipe(
-    map((pizza) => {      
-          return pizza;          
+    map((pizza) => {
+          return pizza;
     })
   );
 }
