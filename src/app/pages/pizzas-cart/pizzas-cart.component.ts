@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 import  sizes  from 'src/app/core/services/pizzaCart/pizza-cart-data';
+import { isSelectedSize } from './validators/size.validators';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class PizzasCartComponent implements OnInit{
     private fb: FormBuilder)
      {
       this.pizzaForm = this.fb.group({
-        size: new FormControl('pequeña'),
+        size: new FormControl('selecciona',[isSelectedSize()]),
       });
      }
 
@@ -32,8 +33,12 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   
-public addToCart( pizza: Pizza){     
+public addToCart( pizza: Pizza){   
+    debugger;   
     pizza.size=this.pizzaForm?.get("size")?.value;
+    this.pizzaForm?.patchValue({
+      size: "selecciona",      
+    })
     if (pizza.size=="mediana") 
     {
       pizza.price=Number((pizza.pricebase*1.10).toFixed(2));

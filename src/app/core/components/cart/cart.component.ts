@@ -76,7 +76,9 @@ export class CartComponent {
   public addOrder(){
     
     const total = this.pizzaCartService.totalCart();
-    const items = this.pizzaIds;  
+    //const items = this.pizzaIds;  
+    const items=this.pizzaCartService.getOrders();
+    console.log(items);
 
     const order: Order = {
       items: items,
