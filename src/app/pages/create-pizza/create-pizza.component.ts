@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
+import { Pizza } from 'src/app/core/services/pizzaCart/pizza-cart-transform.models';
 
 @Component({
   selector: 'app-create-pizza',
@@ -21,25 +22,19 @@ export class CreatePizzaComponent implements OnInit {
   //Creo un array donde me traigo los ingradientes del api para pintarlos
   public ingredient: apiTransformIngredients[] = [];
   //Creo un array donde voy a introducir los ingredientes seleccionados en el checkbox
-  public toppings: any[] = [];
-  //Creo un array donde voy a introducir los datos de mi pizza
-  public pizzaObjet: any[] = [];
-  //Uso una variable con valor 1 para tener siempre cantidad igual a 1
-  public quantity: number = 1;
-  //Uso la variable para guardar el tamaño seleccionado por el usuario
-  public sizeObject: string = '';
-  //Uso la variable para definir el precio en función del tamaño
-  public priceObject: number = 10;
+  public toppings: string[] = [];
 
-  public item: any[] = [];
+  public createdPizza?: Pizza;
+
+  public massRe = '';
 
 
   constructor(
     private fb: FormBuilder,
     private ingredientsService: ApiTransformIngredientsService,
     private pizzaService: PizzaCartService
-  ) {}
-  //Al inicio pido los ingrdientes para pintarlos con un bucle
+  ) {this.createFormPizza()}
+  //Al inicio pido los ingrdientes para pintarlos con un bucle y llamo a la función de crear el formulario
   public ngOnInit(): void {
     this.ingredientsService
       .getIngredients()
@@ -47,12 +42,33 @@ export class CreatePizzaComponent implements OnInit {
         this.ingredient = ingredientsTransformFromApi;
         this.createFormPizza();
       });
+
+      this.pizzaForm?.get('mass')?.valueChanges.subscribe((value) =>{
+        if (!value) { return; }
+        this.massRe = value;
+      });
+      // this.sportForm?.get('image')?.valueChanges.subscribe((value) => {
+      //   if (!value) { return; }
+      //   this.imageBi = value;
+      // });
+      //  this.sportForm?.get('description')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.descriptionBi = value;
+      // });
+      //  this.sportForm?.get('equipment')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.equipmentBi = value;
+      // });
+      //  this.sportForm?.get('author')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.authorBi = value;
+      // });
   }
 
   //Creo la lógica para el formulario y las validaciones de los campos
   public createFormPizza() {
     this.pizzaForm = this.fb.group({
-      name: new FormControl('', [Validators.requiredTrue]),
+      name: new FormControl('Pizza al gusto', [Validators.requiredTrue]),
       mass: new FormControl('', [Validators.requiredTrue]),
       size: new FormControl('', [Validators.requiredTrue]),
       dip: new FormControl('', [Validators.requiredTrue]),
@@ -78,37 +94,19 @@ export class CreatePizzaComponent implements OnInit {
 
   //Función que se ejecuta con el submit del formulario
   public createNewPizza() {
-    //Recojo en una variable los valores del formulario
-    const myCopyPizza = this.pizzaForm;
-    //Asigno la talla de la pizza a la variable que compone el item
-    this.sizeObject = myCopyPizza?.value.size;
-    //Uso los valores que necesita el objeto pizza en el array de items y los meto en un array.
-    if(this.pizzaObjet){
-        this.pizzaObjet.push(myCopyPizza?.value.name);
-        this.pizzaObjet.push(myCopyPizza?.value.mass);
-        this.pizzaObjet.push(myCopyPizza?.value.dip);
-        this.pizzaObjet.push(this.toppings);
-      }
-    //Incremento el precio si el tamaño es mayor que pequeño
-    if(this.sizeObject === "mediana"){
-        this.priceObject = this.priceObject * 1.10;
+    const pizzaAlGusto = this.pizzaForm?.value;
+    if (pizzaAlGusto) {
+      pizzaAlGusto.pricebase = 10;
+      pizzaAlGusto.price = 10;
+      pizzaAlGusto.account = 1;
+      pizzaAlGusto.picture = 'https://es.italy24.press/content/uploads/2023/03/11/29e81ed8c3.jpg';
     }
-    if(this.sizeObject === "familiar"){
-      this.priceObject = this.priceObject * 1.15;
-    }
-
-    //Contruyo el array items que le va a llegar al carrito
-    if(this.pizzaObjet && this.quantity && this.sizeObject && this.priceObject && this.toppings){
-      this.item.push(this.pizzaObjet);
-      this.item.push(this.quantity);
-      this.item.push(this.sizeObject);
-      this.item.push(this.priceObject);
-    }
-    console.log(this.item); 
-    this.addToCart(this.pizzaObjet);
+    console.log(pizzaAlGusto);
+    
+    this.pizzaService.createPizzas(pizzaAlGusto).subscribe((p:Pizza)=>
+       {
+        this.createdPizza=p;
+        this.pizzaService.addPizzas(p)})
   }
 
-  addToCart( pizzaObjet: any){
-    return this.pizzaService.addPizzas(pizzaObjet);
-  }
 }

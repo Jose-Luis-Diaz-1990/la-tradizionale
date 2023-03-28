@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 import { OrderItemService } from '../../services/orders/order-item.service';
@@ -20,7 +21,8 @@ export class CartComponent {
 
   constructor(
     private pizzaCartService: PizzaCartService,
-    private OrderItemService: OrderItemService 
+    private OrderItemService: OrderItemService,
+    private router: Router 
     ){       
       let info=localStorage.getItem("carrito");
       if (info){    
@@ -86,6 +88,7 @@ export class CartComponent {
       total: total
     };   
     this.OrderItemService.createOrder(order).subscribe();
+    this.router.navigate(['customer'])
   }
 
 } 

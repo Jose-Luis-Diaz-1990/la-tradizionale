@@ -1,5 +1,5 @@
 export interface apiIngredient {
-    id: string;
+    _id: string;
     name: string;
     price: number;
     picture: string;
