@@ -54,6 +54,13 @@ public addToCart( pizza: Pizza){
     }
     return this.pizzaService.addPizzas(pizza);
   }
+
+
+  public pizzasCount(){
+    const pizzaCount = this.pizzaService.pizzasCount();
+    return pizzaCount;
+  }
+
   
 
   public pagina: number = 0;

@@ -17,8 +17,13 @@
     <div class="cart-icon" (click)="onToggleCart()">
     <a *ngIf="isLogged" [routerLink]="['cart']">
       <img href="#" class="shop" src="../../../../assets/images/carrito-de-compras.png"  />
+      <p
+      class="pizzasCount"
+      >{{ pizzasCount() }}</p>
     </a>
-      <i class="fa fa-shopping-cart"></i>
+
+    
+    <i class="fa fa-shopping-cart"></i>
     </div>
 
     <a *ngIf="isLogged"

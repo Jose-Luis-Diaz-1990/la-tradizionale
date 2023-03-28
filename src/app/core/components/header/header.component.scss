@@ -5,6 +5,7 @@
   background-color: black;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,.1);
+ 
 }
 
 .logo {
@@ -35,20 +36,62 @@
 }
 
 .user img {
+  margin-left: 20px;
   height: 30px;
   border-radius: 50%;
   
 }
 
-.shop {
+/*.shop {
   height: 30px;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 22%;
 }
 
-.cart__items-num{
+.pizzasCount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
   background-color: #f00;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+
+}*/
+
+.shop {
+  display: flex;
+ margin-top: 50%;
+  
 }
+
+.pizzasCount {
+  position: absolute;
+ margin-top: -50%;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
 
 .cart-icon{
   position: relative;

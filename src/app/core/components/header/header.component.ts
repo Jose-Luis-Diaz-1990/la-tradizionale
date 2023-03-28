@@ -1,3 +1,4 @@
+
 import { PizzaCartService } from './../../services/pizzaCart/pizza-cart.service';
 import { Pizza } from './../../services/pizzaCart/pizza-cart-transform.models';
 
@@ -26,6 +27,7 @@ export class HeaderComponent  {
   constructor(
     private router: Router,
     private auth:AuthService,
+    private pizzaCartService: PizzaCartService
  
   ) {}
 
@@ -50,6 +52,14 @@ export class HeaderComponent  {
 
   onToggleCart(){
     this.viewCart = !this.viewCart
+  }
+
+
+
+  //*
+  public pizzasCount(){
+    const pizzaCount = this.pizzaCartService.pizzasCount();
+    return pizzaCount;
   }
 
 
