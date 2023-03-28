@@ -14,12 +14,9 @@
           <div class="prueba">
           <img class="pizza_img" [src]="onePizza.picture"/>
             <select class="select" formControlName="size">    
-              <option value="selecciona">Selecciona</option>             
+              <option value="selecciona">Tamaño</option>             
               <option *ngFor="let s of sizeOptions" value="{{s}}">{{s | titlecase}}</option>     
-            </select>
-            <p class="error" 
-                       *ngIf="!pizzaForm.get('size')?.valid">
-                       Por favor, selecciona un tamaño</p> 
+            </select> 
             <div class="pizza_name">
               <h3 class="cheese-pizza__title">{{ onePizza.name }}</h3>
             </div>
@@ -28,11 +25,13 @@
                 {{oneIngredient.name}}
               </p>
             </div>
-            <div class="pizza_button">
-              <button [disabled]="!pizzaForm.valid" class="button" (click)="addToCart(onePizza)">
-                Añadir
-              </button>
-            </div>             
+            <button [disabled]="!pizzaForm.valid || !pizzaForm.get('size')?.value" class="button" (click)="addToCart(onePizza)"
+        *ngIf="pizzaForm.get('size')?.value !== 'selecciona'">
+         Añadir
+        </button>
+        <p class="error" *ngIf="pizzaForm.get('size')?.value === 'selecciona'">
+            Por favor, selecciona un tamaño
+        </p>       
           </div>          
       </div>   
     </div>       
