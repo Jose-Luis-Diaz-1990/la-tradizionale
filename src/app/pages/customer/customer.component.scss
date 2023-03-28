@@ -1,0 +1,45 @@
+.contenidoFormulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  
+    .inputForm {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+  
+      label {
+        margin-bottom: 5px;
+      }
+  
+      input,
+      select {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+      }
+  
+      select {
+        width: 100%;
+      }
+    }
+  
+    .buttonForm {
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+  
+      &:hover {
+        background-color: #0069d9;
+      }
+    }
+  }
+  
