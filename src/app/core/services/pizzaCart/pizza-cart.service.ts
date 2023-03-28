@@ -144,4 +144,14 @@ public totalCart(){
     const total = this.mylist.reduce(function(acc, pizza){ return acc + (pizza.account * pizza.price);}, 0);
     return total;
   }
+
+
+
+//Esta función
+public pizzasCount(){
+  const pizzaCount = this.mylist.length;
+  return pizzaCount;
+}
+
+
 }

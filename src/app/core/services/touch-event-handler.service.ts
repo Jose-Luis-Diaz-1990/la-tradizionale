@@ -1,10 +1,11 @@
+import { Pizza } from './pizzaCart/pizza-cart-transform.models';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TouchEventHandlerService {
-
+ 
   private initialTouch = { clientX: 0, clientY: 0 };
   private finalTouch = { clientX: 0, clientY: 0 };
 
@@ -39,4 +40,6 @@ export class TouchEventHandlerService {
 
     return false;
   }
+
+
 }
