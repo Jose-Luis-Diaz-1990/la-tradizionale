@@ -83,7 +83,7 @@
       <div *ngFor="let oneIngredient of ingredient">
         <label>
           <input type="checkbox" formArrayName="ingredients" 
-          (change)="onCheckboxChange($event, oneIngredient.name)"/>
+          (change)="onCheckboxChange($event, oneIngredient._id)"/>
           <span>{{ oneIngredient.name }}</span>
           <img [src]="oneIngredient.picture" style="width: 50px;"/> 
         </label>
