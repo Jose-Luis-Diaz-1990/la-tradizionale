@@ -1,5 +1,5 @@
 export interface apiTransformIngredients {
-    id: string;
+    _id: string;
     name: string;
     price: number;
     picture: string;
