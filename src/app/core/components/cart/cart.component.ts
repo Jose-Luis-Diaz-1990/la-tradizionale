@@ -15,6 +15,7 @@ export class CartComponent {
   public order$?: Observable<Order[]>  
 
   myCart$ = this.pizzaCartService.myCart$;
+  
 
   constructor(
     private pizzaCartService: PizzaCartService,
