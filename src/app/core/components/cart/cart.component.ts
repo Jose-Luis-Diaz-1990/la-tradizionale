@@ -16,6 +16,7 @@ export class CartComponent {
   public pizzaIds: string[] = [];
 
   myCart$ = this.pizzaCartService.myCart$;
+  
 
   constructor(
     private pizzaCartService: PizzaCartService,
