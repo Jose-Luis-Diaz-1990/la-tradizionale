@@ -26,6 +26,8 @@ export class CreatePizzaComponent implements OnInit {
 
   public createdPizza?: Pizza;
 
+  public massRe = '';
+
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +42,27 @@ export class CreatePizzaComponent implements OnInit {
         this.ingredient = ingredientsTransformFromApi;
         this.createFormPizza();
       });
+
+      this.pizzaForm?.get('mass')?.valueChanges.subscribe((value) =>{
+        if (!value) { return; }
+        this.massRe = value;
+      });
+      // this.sportForm?.get('image')?.valueChanges.subscribe((value) => {
+      //   if (!value) { return; }
+      //   this.imageBi = value;
+      // });
+      //  this.sportForm?.get('description')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.descriptionBi = value;
+      // });
+      //  this.sportForm?.get('equipment')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.equipmentBi = value;
+      // });
+      //  this.sportForm?.get('author')?.valueChanges.subscribe((value) =>{
+      //   if (!value) { return; }
+      //   this.authorBi = value;
+      // });
   }
 
   //Creo la lógica para el formulario y las validaciones de los campos
