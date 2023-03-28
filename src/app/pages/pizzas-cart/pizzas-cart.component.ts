@@ -33,7 +33,8 @@ export class PizzasCartComponent implements OnInit{
     });
   }
   
-public addToCart( pizza: Pizza){   
+public addToCart( pizza: Pizza){  
+  alert('La pizza ha sido añadida al carrito'); 
     debugger;   
     pizza.size=this.pizzaForm?.get("size")?.value;
     this.pizzaForm?.patchValue({
