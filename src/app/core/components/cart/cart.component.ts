@@ -12,7 +12,8 @@ import { Order } from '../../services/orders/orders.transform.models';
 })
 export class CartComponent {
   public myCart:Pizza[]=[];
-  public order$?: Observable<Order[]>  
+  public order$?: Observable<Order[]> 
+  public pizzaIds: string[] = [];
 
   myCart$ = this.pizzaCartService.myCart$;
   
@@ -26,7 +27,10 @@ export class CartComponent {
         info=info.replace('\"', '"');
         this.myCart=JSON.parse(info)
         this.pizzaCartService.myCart.next(JSON.parse(info));
-     }      
+     }
+     this.pizzaCartService.getPizzaIds().subscribe((id) => {
+      this.pizzaIds.push(id);
+  });      
   }
 
   public totalProduct(price: number, account: number){
@@ -59,16 +63,29 @@ export class CartComponent {
     return result;
   }
   
+  // public addOrder(){
+  //   const total = this.pizzaCartService.totalCart();
+  //   const items =this.pizzaCartService.getOrders();        
+  //  // const items = this.myCart;
+  //   const order: Order = {
+  //     items: items.map((order)=> {return order._id}),
+  //     total: total
+  //   };   
+  //   console.log(order);
+  //   this.OrderItemService.createOrder(order);
+  // }
   public addOrder(){
+    
     const total = this.pizzaCartService.totalCart();
-    const items =this.pizzaCartService.getOrders();        
-   // const items = this.myCart;
+    //const items = this.pizzaIds;  
+    const items=this.pizzaCartService.getOrders();
+    console.log(items);
+
     const order: Order = {
-      items: items.map((order)=> {return order._id}),
+      items: items,
       total: total
     };   
-    console.log(order);
-    this.OrderItemService.createOrder(order);
+    this.OrderItemService.createOrder(order).subscribe();
   }
 
 } 

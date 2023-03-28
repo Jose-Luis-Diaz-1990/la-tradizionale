@@ -2,7 +2,7 @@ import { LoadingService } from './../loading/loading.service';
 import { apiPizza } from './api/api-pizza-cart.models';
 import { Pizza } from './pizza-cart-transform.models';
 import { Injectable } from '@angular/core';
-import { map, Observable, BehaviorSubject, tap} from 'rxjs';
+import { map, Observable, BehaviorSubject, tap, Subject} from 'rxjs';
 import { ApiPizzaCartService } from './api/api-pizza-cart.service';
 
 @Injectable({
@@ -17,6 +17,8 @@ myCart = new BehaviorSubject<Pizza[]>([]);
 // Le indicamos el valor que va a guardar.
 myCart$ = this.myCart.asObservable();
 
+private pizzasIds = new Subject<string>()
+
 constructor( 
   private apiPizzaService: ApiPizzaCartService,
   private loadingService: LoadingService) {
@@ -25,6 +27,10 @@ constructor(
       this.mylist=curChart
     }
    }
+
+getPizzaIds() {
+  return this.pizzasIds.asObservable();
+}   
 
 //Funcion que transforma los datos en bruto del GET al api
 public getPizzas(): Observable<Pizza[]>{
@@ -100,6 +106,8 @@ public addPizzas(pizza: Pizza){
         this.myCart.next(this.mylist);
         localStorage.setItem("carrito",JSON.stringify(this.mylist)); 
       }
+       this.myCart.next(this.mylist);
+        this.pizzasIds.next(pizza._id)  
     } 
   } 
   
