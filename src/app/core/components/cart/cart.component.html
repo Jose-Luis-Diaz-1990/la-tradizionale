@@ -1,4 +1,5 @@
-<div class="productCart-wrapper">
+<div *ngIf="showDropdown" id="dropdown">
+<div  class="productCart-wrapper">
     <article class="prodctCart" *ngFor="let pizzaBuy of myCart$ | async">
         <div class="product-body">
             <p class="name">{{pizzaBuy.name}}</p>
@@ -82,5 +83,6 @@
 
 
     <button class="cart-btn" type="submit" (click)="handleButtonClick()"> Comprar </button>
+</div>
 </div>
 
