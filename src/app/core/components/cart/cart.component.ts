@@ -1,6 +1,7 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 import { OrderItemService } from '../../services/orders/order-item.service';
@@ -19,11 +20,25 @@ export class CartComponent {
   myCart$ = this.pizzaCartService.myCart$;
   
 
+  public orderForm?: FormGroup;
+  public isStoreSelected: boolean = false;
+  public pickup = false;
+  public delivery = false;
+  public showForm: boolean = false;
+
+
+
   constructor(
+
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
     private pizzaCartService: PizzaCartService,
     private OrderItemService: OrderItemService,
     private router: Router 
-    ){       
+    ){ 
+      this.orderForm = this.formBuilder.group({});
+      this.createCustomerOrder();
+
       let info=localStorage.getItem("carrito");
       if (info){    
         info=info.replace('\"', '"');
@@ -88,10 +103,50 @@ export class CartComponent {
       total: total
     };   
     this.OrderItemService.createOrder(order).subscribe();
-    this.router.navigate(['customer'])
   }
 
-} 
+
+
+  ngOnInit() {
+    this.createCustomerOrder();
+  }
+
+   public createCustomerOrder() {
+    this.orderForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      shippingAddress: [''],
+      store: ['']
+    });
+  }
+
+public setRecoger() {
+this.pickup = true;
+this.delivery = false;
+}
+
+public setDomicilio() {
+this.pickup = false;
+this.delivery = true;
+}
+
+
+//Llama a las dos funciones
+handleButtonClick() {
+  debugger;
+  console.log(this.orderForm)
+  if (this.orderForm?.valid) {
+      this.addOrder();
+      this.createCustomerOrder();
+  } else {
+      alert("Por favor, completa todos los campos del formulario antes de realizar la compra.");
+  }
+}
+
+}
+
 
 
 /*  public carrito?:[pedido];

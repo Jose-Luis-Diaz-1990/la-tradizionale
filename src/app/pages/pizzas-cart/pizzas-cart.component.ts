@@ -18,6 +18,7 @@ export class PizzasCartComponent implements OnInit{
     public pizzaForm?: FormGroup;
     public sizeOptions=sizes;   
     
+    
   constructor(
     private pizzaService: PizzaCartService,
     private fb: FormBuilder)
@@ -29,7 +30,7 @@ export class PizzasCartComponent implements OnInit{
 
   public ngOnInit(): void {     
     this.pizzaService.getPizzas().subscribe((pizza: Pizza[])=> {
-      this.pizza = pizza;
+      this.pizza = pizza.filter(p => !p.name.includes('gusto'));
     });
   }
   
