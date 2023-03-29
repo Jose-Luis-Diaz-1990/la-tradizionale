@@ -126,7 +126,7 @@
   .cart-btn {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #78a62b;
+    background-color: #df0313;
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
@@ -176,8 +176,22 @@
     }
   
   }
-  
 
+  .buttonForm {
+    padding: 5px 10px;
+    font-size: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #78a62b;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .botones{
+    margin-top: 2%;
+    display: flex;
+  }
 
 
 
