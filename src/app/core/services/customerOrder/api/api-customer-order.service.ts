@@ -25,6 +25,8 @@ export class ApiCustomerOrderService {
   }
 
   public createApiCustomerOrder(body: CustomerOrder) {
-    return this.http.post<ApiCustomerOrder>(`${API_PIZZA_URL}/customer`, body);
+    console.log(body);
+    
+    return this.http.post<ApiCustomerOrder>(`${API_PIZZA_URL}/customer-order`, body);
   }
 }

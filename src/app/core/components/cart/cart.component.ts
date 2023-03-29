@@ -146,10 +146,12 @@ handleButtonClick() {
   // console.log(this.orderForm)
   if (this.orderForm?.valid) {
       this.addOrder();
+      this.customerOrderService.createCustomerOrder(this.orderForm?.value).subscribe();
       // this.newCustomerOrder();
   } else {
       alert("Por favor, completa todos los campos del formulario antes de realizar la compra.");
   }
+  this.orderForm?.reset();
 }
 
 }
