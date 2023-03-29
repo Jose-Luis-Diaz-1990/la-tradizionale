@@ -81,7 +81,7 @@ export class CreatePizzaComponent implements OnInit {
   //Creo la lógica para el formulario y las validaciones de los campos
   public createFormPizza() {
     this.pizzaForm = this.fb.group({
-      name: new FormControl('Pizza al gusto15', [Validators.requiredTrue]),
+      name: new FormControl('Pizza al gusto5656565', [Validators.requiredTrue]),
       mass: new FormControl('', [Validators.requiredTrue]),
       size: new FormControl('', [Validators.requiredTrue]),
       dip: new FormControl('', [Validators.requiredTrue]),
