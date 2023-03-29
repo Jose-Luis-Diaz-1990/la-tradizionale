@@ -1,3 +1,4 @@
+
 import { ApiTransformIngredientsService } from './../../core/services/ingredients/api-transform-ingredients.service';
 import { apiTransformIngredients } from './../../core/services/ingredients/api-transform-ingredients.models';
 import {
@@ -64,6 +65,7 @@ export class CreatePizzaComponent implements OnInit {
       });
 
       this.pizzaForm?.get('ingredients')?.valueChanges.subscribe((value) =>{
+
         if (!value) { return; }    
         this.ingredientsRe=[];
         for (let i = 0; i < value.length; i++) {          
@@ -105,15 +107,23 @@ export class CreatePizzaComponent implements OnInit {
 
   //Función que se ejecuta con el submit del formulario
   public createNewPizza() {   
+
     const pizzaAlGusto = this.pizzaForm?.value;
     if (pizzaAlGusto) {
       pizzaAlGusto.pricebase = 10;
       pizzaAlGusto.price = 10;
       pizzaAlGusto.account = 1;
       pizzaAlGusto.picture = 'https://es.italy24.press/content/uploads/2023/03/11/29e81ed8c3.jpg';
-    }    
-    
-    console.log(pizzaAlGusto);
+      if(pizzaAlGusto.size === 'mediana'){
+        pizzaAlGusto.pricebase *= 1.10;
+        pizzaAlGusto.price *= 1.10;
+      }
+      if(pizzaAlGusto.size === 'familiar'){
+        pizzaAlGusto.pricebase *= 1.15;
+        pizzaAlGusto.price *= 1.15;
+      }
+    }
+
     this.pizzaService.createPizzas(pizzaAlGusto).subscribe((p:Pizza)=>
        {        
         this.createdPizza=p;
