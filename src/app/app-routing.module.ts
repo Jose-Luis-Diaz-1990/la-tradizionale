@@ -28,10 +28,6 @@ const routes: Routes = [
     path: 'pizzaCart',
     loadChildren: () => import('./pages/pizzas-cart/pizzas-cart.module').then(m => m.PizzasCartModule)
   },
-    {
-    path: 'customer',
-    loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule)
-  },
   {
     path: '**',
     redirectTo: 'home'

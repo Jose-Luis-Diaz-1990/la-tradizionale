@@ -1,13 +1,21 @@
+<div class="menu">
+  <div class="container">
+        <h2 class="menu_h2">Mi pizza</h2>
+  </div>
+</div>
 
+<section class="create-pizza">
 <form
   *ngIf="pizzaForm"
   (submit)="createNewPizza()"
   [formGroup]="pizzaForm"
   name="miPizza"
-  style="margin: 140px 0 0 600px; color: aliceblue; font-size: 20px"
+  class="pizza-form"
 >
-  <div>
-    <h4>Tamaño</h4>
+  <div class="form-section">
+     <h4>Tamaño</h4>
+    <div class="size">
+    <div class="size1">
     <p>
       <input
         class="form__input"
@@ -16,6 +24,9 @@
         value="pequena"
       />Pequeña
     </p>
+    <img class="s" src="../../../assets/images/size.png" />
+  </div>
+  <div  class="size1">
     <p>
       <input
         class="form__input"
@@ -24,6 +35,10 @@
         value="mediana"
       />Mediana
     </p>
+    <img class="m" src="../../../assets/images/size.png" />
+  </div>
+
+  <div  class="size1">
     <p>
       <input
         class="form__input"
@@ -32,8 +47,11 @@
         value="familiar"
       />Familiar
     </p>
+    <img class="l" src="../../../assets/images/size.png" />
   </div>
-  <div>
+</div>
+  </div>
+  <div class="form-section">
     <h4>Tipo de masa</h4>
     <p>
       <input
@@ -52,57 +70,100 @@
       />Masa Original
     </p>
   </div>
-  <div>
+
+
+  <div class="form-section">
     <h4>Tipo de salsa</h4>
-    <p>
-      <input
-        class="form__input"
-        type="radio"
-        formControlName="dip"
-        value="tomate"
-      />Salsa de tomate
-    </p>
-    <p>
-      <input
-        class="form__input"
-        type="radio"
-        formControlName="dip"
-        value="carbonara"
-      />Salsa carbonara
-    </p>
-    <p>
-        <input
-          class="form__input"
-          type="radio"
-          formControlName="dip"
-          value="barbacoa"
-        />Salsa barbacoa
-      </p>
-  </div>
-  <div>
+   <div class="dip">
+   <div class="dip1">
+   <p>
+     <input
+     class="form__input"
+     type="radio"
+     formControlName="dip"
+     value="tomate"
+   />Salsa de tomate
+   </p>
+   <img class="dipimg" src="../../../assets/images/Tomate.png" />
+ </div>
+ <div  class="dip1">
+   <p>
+     <input
+     lass="form__input"
+     type="radio"
+     formControlName="dip"
+     value="carbonara"
+   />Salsa carbonara
+   </p>
+   <img class="dipimg" src="../../../assets/images/Carbonara.png" />
+ </div>
+
+ <div  class="size1">
+   <p>
+     <input
+     class="form__input"
+     type="radio"
+     formControlName="dip"
+     value="barbacoa"
+   />Salsa barbacoa
+   </p>
+   <img class="dipimg" src="../../../assets/images/BBQ.png" />
+ </div>
+</div>
+ </div>
+
+  <div class="form-section">
     <h4>Ingredientes</h4>
-      <div *ngFor="let oneIngredient of ingredient">
-        <label>
-          <input type="checkbox" formArrayName="ingredients" 
-          (change)="onCheckboxChange($event, oneIngredient._id)"/>
-          <span>{{ oneIngredient.name }}</span>
-          <img [src]="oneIngredient.picture" style="width: 50px;"/> 
-        </label>
+    <div class="ingredient-columns">
+      <div class="ingredient-column">
+        <div *ngFor="let oneIngredient of ingredient.slice(0, halfLength)">
+          <label>
+            <input
+              type="checkbox"
+              formArrayName="ingredients"
+              (change)="onCheckboxChange($event, oneIngredient._id)"
+            />
+            <span>{{ oneIngredient.name }}</span>
+            <img [src]="oneIngredient.picture" />
+          </label>
+        </div>
       </div>
+      <div class="ingredient-column">
+        <div *ngFor="let oneIngredient of ingredient.slice(halfLength)">
+          <label>
+            <input
+              type="checkbox"
+              formArrayName="ingredients"
+              (change)="onCheckboxChange($event, oneIngredient._id)"
+            />
+            <span>{{ oneIngredient.name }}</span>
+            <img [src]="oneIngredient.picture" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="resumen">
+  <div class="resumen-div">
+    <h3 class="title"> Resumen </h3>
+     <p>{{ massRe }}</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
+     <p>Prueba Prueba Prueba</p>
   </div>
 
-  <div class="block__rigth">
-    <p>{{ massRe }}</p>
-    <!-- <div
-      
-      [ngStyle]="{
-        'background-image': 'url(' + imageBi + ')'
-      }"
-      class="prewiev__form"
-    ></div>
-    <p>{{ descriptionBi }}</p>
-    <p>{{ equipmentBi }}</p>
-    <p>{{ authorBi }}</p> -->
-  </div>
-  <button type="submit">Enviar</button>
-</form>
+<button type="submit">Enviar</button>
+</div>
+
+</section>
+

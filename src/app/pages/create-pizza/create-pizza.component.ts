@@ -28,6 +28,10 @@ export class CreatePizzaComponent implements OnInit {
 
   public massRe = '';
 
+  halfLength: number = 0;;
+
+  
+
 
   constructor(
     private fb: FormBuilder,
@@ -40,9 +44,10 @@ export class CreatePizzaComponent implements OnInit {
       .getIngredients()
       .subscribe((ingredientsTransformFromApi: apiTransformIngredients[]) => {
         this.ingredient = ingredientsTransformFromApi;
+        this.halfLength = Math.ceil(this.ingredient.length / 2);
         this.createFormPizza();
+        
       });
-
       this.pizzaForm?.get('mass')?.valueChanges.subscribe((value) =>{
         if (!value) { return; }
         this.massRe = value;
