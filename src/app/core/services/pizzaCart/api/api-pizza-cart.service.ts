@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { apiPizza } from './api-pizza-cart.models';
 import { Pizza} from '../pizza-cart-transform.models'
 
-const API_PIZZA_URL='http://localhost:3000';
+const API_PIZZA_URL='https://back-pizza.vercel.app';
 
 @Injectable({
   providedIn: 'root'
