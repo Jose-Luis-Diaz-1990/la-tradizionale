@@ -28,8 +28,10 @@
        <p class="cartTotal-total">Total: $ {{totalCart()}} </p>
     </div>
 
-    <button class="buttonForm" (click)="setRecoger()" (click)="showForm = true">Domicilio</button>
+<div class="botones">
+<button class="buttonForm" (click)="setRecoger()" (click)="showForm = true">Domicilio</button>
 <button class="buttonForm" (click)="setDomicilio()" (click)="showForm = true">Recoger</button>
+</div>
 
 <div class="contenidoFormulario" 
 *ngIf="showForm">
