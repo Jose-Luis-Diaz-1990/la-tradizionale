@@ -152,18 +152,11 @@
   <div class="resumen-div">
     <h3 class="title"> Resumen </h3>
     <img class="pizzaR" src="../../../assets/images/banner-removebg-preview.png"/>
-     <p>{{ massRe }}</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
-     <p>Prueba Prueba Prueba</p>
+    <p>Tamaño {{sizeRe}}</p>
+     <p>Masa {{ massRe }}</p>
+     <p>Salsa {{dipRe}}</p>
+     <p>Ingredientes:</p>    
+     <p *ngFor="let i of ingredientsRe">{{i}}</p>
   </div>
 
 <button type="submit">Enviar</button>

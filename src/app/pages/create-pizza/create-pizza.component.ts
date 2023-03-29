@@ -1,3 +1,4 @@
+
 import { ApiTransformIngredientsService } from './../../core/services/ingredients/api-transform-ingredients.service';
 import { apiTransformIngredients } from './../../core/services/ingredients/api-transform-ingredients.models';
 import {
@@ -27,16 +28,17 @@ export class CreatePizzaComponent implements OnInit {
   public createdPizza?: Pizza;
 
   public massRe = '';
+  public sizeRe = '';
+  public dipRe = '';
+  public ingredientsRe:string[]=[];
 
-  halfLength: number = 0;;
-
-  
-
+  halfLength: number = 0;
 
   constructor(
     private fb: FormBuilder,
     private ingredientsService: ApiTransformIngredientsService,
     private pizzaService: PizzaCartService
+    
   ) {this.createFormPizza()}
   //Al inicio pido los ingrdientes para pintarlos con un bucle y llamo a la función de crear el formulario
   public ngOnInit(): void {
@@ -44,30 +46,36 @@ export class CreatePizzaComponent implements OnInit {
       .getIngredients()
       .subscribe((ingredientsTransformFromApi: apiTransformIngredients[]) => {
         this.ingredient = ingredientsTransformFromApi;
-        this.halfLength = Math.ceil(this.ingredient.length / 2);
-        this.createFormPizza();
-        
+        this.halfLength = Math.ceil(this.ingredient.length / 2);               
       });
+
+      this.pizzaForm?.get('size')?.valueChanges.subscribe((value) =>{
+        if (!value) { return; }       
+        this.sizeRe = value;
+      });
+
       this.pizzaForm?.get('mass')?.valueChanges.subscribe((value) =>{
-        if (!value) { return; }
+        if (!value) { return; }       
         this.massRe = value;
       });
-      // this.sportForm?.get('image')?.valueChanges.subscribe((value) => {
-      //   if (!value) { return; }
-      //   this.imageBi = value;
-      // });
-      //  this.sportForm?.get('description')?.valueChanges.subscribe((value) =>{
-      //   if (!value) { return; }
-      //   this.descriptionBi = value;
-      // });
-      //  this.sportForm?.get('equipment')?.valueChanges.subscribe((value) =>{
-      //   if (!value) { return; }
-      //   this.equipmentBi = value;
-      // });
-      //  this.sportForm?.get('author')?.valueChanges.subscribe((value) =>{
-      //   if (!value) { return; }
-      //   this.authorBi = value;
-      // });
+
+      this.pizzaForm?.get('dip')?.valueChanges.subscribe((value) =>{
+        if (!value) { return; }       
+        this.dipRe = value;
+      });
+
+      this.pizzaForm?.get('ingredients')?.valueChanges.subscribe((value) =>{
+
+                if (!value) { return; }          
+        
+                for (let index = 0; index < this.ingredient.length; index++) {
+        
+                  this.ingredientsRe[index]=this.ingredient[index].name          
+        
+                }                
+        
+              });
+        
   }
 
   //Creo la lógica para el formulario y las validaciones de los campos
@@ -97,7 +105,7 @@ export class CreatePizzaComponent implements OnInit {
     }
   }
 
-  //Función que se ejecuta con el submit del formulario
+   //Función que se ejecuta con el submit del formulario
   public createNewPizza() {
     const pizzaAlGusto = this.pizzaForm?.value;
     if (pizzaAlGusto) {
@@ -105,9 +113,15 @@ export class CreatePizzaComponent implements OnInit {
       pizzaAlGusto.price = 10;
       pizzaAlGusto.account = 1;
       pizzaAlGusto.picture = 'https://es.italy24.press/content/uploads/2023/03/11/29e81ed8c3.jpg';
+      if(pizzaAlGusto.size === 'mediana'){
+        pizzaAlGusto.pricebase *= 1.10;
+        pizzaAlGusto.price *= 1.10;
+      }
+      if(pizzaAlGusto.size === 'familiar'){
+        pizzaAlGusto.pricebase *= 1.15;
+        pizzaAlGusto.price *= 1.15;
+      }
     }
-    console.log(pizzaAlGusto);
-    
     this.pizzaService.createPizzas(pizzaAlGusto).subscribe((p:Pizza)=>
        {
         this.createdPizza=p;

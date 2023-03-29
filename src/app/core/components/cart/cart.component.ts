@@ -6,6 +6,8 @@ import { Pizza } from '../../services/pizzaCart/pizza-cart-transform.models';
 import { PizzaCartService } from 'src/app/core/services/pizzaCart/pizza-cart.service';
 import { OrderItemService } from '../../services/orders/order-item.service';
 import { Order } from '../../services/orders/orders.transform.models';
+import { CustomerOrderService } from '../../services/customerOrder/customer-order.service';
+import { CustomerOrder } from '../../services/customerOrder/customer-order.models.js'
 
 @Component({
   selector: 'app-cart',
@@ -16,6 +18,7 @@ export class CartComponent {
   public myCart:Pizza[]=[];
   public order$?: Observable<Order[]> 
   public pizzaIds: string[] = [];
+  public customer: CustomerOrder []= [];
 
   myCart$ = this.pizzaCartService.myCart$;
   
@@ -34,6 +37,7 @@ export class CartComponent {
     private activatedRoute: ActivatedRoute,
     private pizzaCartService: PizzaCartService,
     private OrderItemService: OrderItemService,
+    private customerOrderService: CustomerOrderService,
     private router: Router 
     ){ 
       this.orderForm = this.formBuilder.group({});
@@ -111,17 +115,20 @@ export class CartComponent {
     this.createCustomerOrder();
   }
 
-   public createCustomerOrder() {
+  public createCustomerOrder() {
     this.orderForm = this.formBuilder.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      shippingAddress: [''],
-      store: ['']
+      email: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      shippingAddress: ['',],
+      store: ['',]
     });
   }
 
+  public newCustomerOrder(){
+    console.log(this.orderForm?.valid);
+  }
 public setRecoger() {
 this.pickup = true;
 this.delivery = false;
@@ -135,11 +142,11 @@ this.delivery = true;
 
 //Llama a las dos funciones
 handleButtonClick() {
-  debugger;
-  console.log(this.orderForm)
+  
+  // console.log(this.orderForm)
   if (this.orderForm?.valid) {
       this.addOrder();
-      this.createCustomerOrder();
+      // this.newCustomerOrder();
   } else {
       alert("Por favor, completa todos los campos del formulario antes de realizar la compra.");
   }
