@@ -64,15 +64,22 @@ export class CreatePizzaComponent implements OnInit {
       });
 
       this.pizzaForm?.get('ingredients')?.valueChanges.subscribe((value) =>{
-        if (!value) { return; }       
-        this.ingredientsRe = value;
+        if (!value) { return; }    
+        this.ingredientsRe=[];
+        for (let i = 0; i < value.length; i++) {          
+          for (let j = 0; j < this.ingredient.length; j++) {    
+            if (this.ingredient[j]._id==value[i]){
+              this.ingredientsRe[i]=this.ingredient[j].name  
+            }        
+          }    
+        }                       
       });
   }
 
   //Creo la lógica para el formulario y las validaciones de los campos
   public createFormPizza() {
     this.pizzaForm = this.fb.group({
-      name: new FormControl('Pizza al gusto', [Validators.requiredTrue]),
+      name: new FormControl('Pizza al gusto15', [Validators.requiredTrue]),
       mass: new FormControl('', [Validators.requiredTrue]),
       size: new FormControl('', [Validators.requiredTrue]),
       dip: new FormControl('', [Validators.requiredTrue]),
@@ -97,18 +104,18 @@ export class CreatePizzaComponent implements OnInit {
   }
 
   //Función que se ejecuta con el submit del formulario
-  public createNewPizza() {
+  public createNewPizza() {   
     const pizzaAlGusto = this.pizzaForm?.value;
     if (pizzaAlGusto) {
       pizzaAlGusto.pricebase = 10;
       pizzaAlGusto.price = 10;
       pizzaAlGusto.account = 1;
       pizzaAlGusto.picture = 'https://es.italy24.press/content/uploads/2023/03/11/29e81ed8c3.jpg';
-    }
-    console.log(pizzaAlGusto);
+    }    
     
+    console.log(pizzaAlGusto);
     this.pizzaService.createPizzas(pizzaAlGusto).subscribe((p:Pizza)=>
-       {
+       {        
         this.createdPizza=p;
         this.pizzaService.addPizzas(p)})
   }
