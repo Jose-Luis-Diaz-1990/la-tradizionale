@@ -29,7 +29,7 @@ export class CartComponent {
   public delivery = false;
   public showForm: boolean = false;
 
-
+  showDropdown: boolean = true;
 
   constructor(
 
@@ -139,14 +139,21 @@ this.pickup = false;
 this.delivery = true;
 }
 
+public goToPay(){
+  this.router.navigate(['pago'])
+}
+
+
 
 //Llama a las dos funciones
 handleButtonClick() {
   
   // console.log(this.orderForm)
   if (this.orderForm?.valid) {
+      this.goToPay();
       this.addOrder();
       this.customerOrderService.createCustomerOrder(this.orderForm?.value).subscribe();
+      this.showDropdown = false;
       // this.newCustomerOrder();
   } else {
       alert("Por favor, completa todos los campos del formulario antes de realizar la compra.");

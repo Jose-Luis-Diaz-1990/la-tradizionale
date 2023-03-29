@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
   },
   {
+    path: 'pago',
+    loadChildren: () => import('./pages/creditCard/creditCard.module').then(m => m.CreditCardModule)
+  },
+  {
     path: 'create-pizza',
     loadChildren: () => import('./pages/create-pizza/create-pizza.module').then(m => m.CreatePizzaModule)
   },
