@@ -11,6 +11,10 @@ import { TouchEventHandlerService } from 'src/app/core/services/touch-event-hand
 })
 export class CreditCardComponent {
 
+  public pago() {   
+        alert('Pago realizado con éxito');
+  }
+
  
 }
 

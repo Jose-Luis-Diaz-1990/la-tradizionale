@@ -129,6 +129,7 @@ export class CreatePizzaComponent implements OnInit {
        {        
         this.createdPizza=p;
         this.pizzaService.addPizzas(p)})
+        alert('Pizza creada añadida al carrito!');
   }
 
 }
