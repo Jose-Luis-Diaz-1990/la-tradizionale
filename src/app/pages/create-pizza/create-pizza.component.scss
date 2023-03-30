@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
 
+
+*{
+  font-size: 15px;
+}
+
 /* Estilos para el contenedor del menú */
 .menu {
     background-position: center center;
@@ -194,6 +199,9 @@ button[type="submit"]:hover {
   
 }
 
+.resumen-div p{
+  font-size: 15px;
+}
 
 @media (max-width: 768px) {
 
@@ -229,4 +237,7 @@ button[type="submit"]:hover {
   .pizzah2 {
     font-size: 16px;
   }
-}
+  button[type="submit"] {
+    margin-left: 30%;
+    margin-bottom: 10%;
+}}
