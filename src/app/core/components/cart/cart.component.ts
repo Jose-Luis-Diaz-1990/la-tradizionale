@@ -161,6 +161,16 @@ handleButtonClick() {
   this.orderForm?.reset();
 }
 
+
+handleButtonClick2() {
+      this.goToPay();
+      this.addOrder();
+      this.customerOrderService.createCustomerOrder(this.orderForm?.value).subscribe();
+      this.showDropdown = false;
+      this.orderForm?.reset();
+}
+
+
 }
 
 
