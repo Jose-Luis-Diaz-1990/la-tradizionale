@@ -62,5 +62,10 @@ export class HeaderComponent  {
     return pizzaCount;
   }
 
+  public goToHome(){
+    this.router.navigate(['home'])
+    location.reload(); // Recargar la página
+  }
+
 
   }
