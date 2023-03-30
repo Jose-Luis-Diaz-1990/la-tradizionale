@@ -2,7 +2,7 @@
 import { PizzaCartService } from './../../services/pizzaCart/pizza-cart.service';
 import { Pizza } from './../../services/pizzaCart/pizza-cart-transform.models';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 

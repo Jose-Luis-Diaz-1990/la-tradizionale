@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { TouchEventHandlerService } from 'src/app/core/services/touch-event-handler.service';
 
 
@@ -11,9 +11,11 @@ import { TouchEventHandlerService } from 'src/app/core/services/touch-event-hand
 })
 export class CreditCardComponent {
 
+
   public pago() {   
         alert('Pago realizado con éxito');
   }
+
 
  
 }
